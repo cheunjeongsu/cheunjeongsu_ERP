@@ -5,7 +5,7 @@
 <html lang="uft-8">
 
 <head>
-깃허브 테스트 2차1111
+천승훈 홈 파일 (테스트 진행중)
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
