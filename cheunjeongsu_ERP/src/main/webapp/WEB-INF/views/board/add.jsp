@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	이용수 test 실행. jsq 변경 완료.
+	이용수 test 실행. jsq 변경 완료했습니다.
+
 </body>
 </html>
