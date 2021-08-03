@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.my.UserManageMapper">
+
+	<select id="selectOne" resultType="UserManage">
+		SELECT * FROM USERMANAGE 
+		WHERE GUBUN = #{gubun}
+		AND NUM = #{num}
+		AND USERID = #{userid}
+	</select>
+
+	<insert id="insert" >
+		INSERT INTO USERMANAGE (GUBUN, NUM, USERID, STATE)
+		VALUES (#{gubun},#{num}, #{userid}, #{state})
+	</insert>
+	<!-- 좋아요 / 싫어요 --> 
+	<update id="update">
+		UPDATE USERMANAGE
+		SET STATE = #{state}
+		WHERE GUBUN = #{gubun}
+		AND NUM = #{num}
+		AND USERID = #{userid}
+	</update>
+	
+	<!-- 	프로시저 호출
+	1)게시물 조회수+1
+	2)usermanager테이블에 insert -->
+	<update id="pUpdateReadCnt">
+		CALL P_UPDATE_READ_CNT(#{gubun},#{num}, #{userid}, #{state})
+	</update>
+	
+	
+	
+	
+</mapper>

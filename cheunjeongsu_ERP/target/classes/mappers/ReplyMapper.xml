@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.my.ReplyMapper">
+	<insert id="insert" >
+		INSERT INTO REPLY(RNUM,BNUM,USERID,CONTENT,IP,RESTEP,RELEVEL)
+		VALUES (rseq.nextval,#{bnum}, #{userid}, #{content}, #{ip},#{restep},#{relevel})
+	</insert>
+	<!-- 글순서+1 -->
+	<update id="updateRestep">
+		UPDATE REPLY
+		SET RESTEP = RESTEP +1
+		WHERE BNUM = #{bnum}
+		AND RESTEP >= #{restep}
+	</update>
+	
+	<select id="selectList" resultType="java.util.Map">
+			select R.*, um.state from reply R
+			left join
+			(select * from usermanage
+			    where gubun = '2'
+			      and userid = #{userid}) um
+			on (R.rnum = um.num)
+			where bnum = #{bnum}
+			order by restep
+	</select>
+	
+	<update id="update">
+		UPDATE REPLY
+		SET CONTENT = #{content}
+		WHERE RNUM = #{rnum}
+	</update>
+
+	<delete id="delete">
+		delete reply
+		where rnum = #{rnum}		
+	</delete>
+	
+</mapper>

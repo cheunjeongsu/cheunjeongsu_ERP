@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+
+	<!-- 널값 허용 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="org.spring.my.dto.Member" alias="Member"/>		
+		<typeAlias type="org.spring.my.dto.Board" alias="Board"/>
+		<typeAlias type="org.spring.my.dto.Board" alias="BoardFile"/>
+		<typeAlias type="org.spring.my.dto.UserManage" alias="UserManage"/>
+		<typeAlias type="org.spring.my.dto.Reply" alias="Reply"/>
+	</typeAliases>
+	
+	
+</configuration>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.my.BoardFileMapper">
+	<insert id="insertBoardFiles" >
+		INSERT into BOARDFILE(fnum, bnum, filename)
+			SELECT fseq.nextval, f.* FROM (
+	 		<foreach collection="filenamelist" item="filename" index="index" separator="UNION ALL" open="" close="">
+				SELECT #{bnum}, #{filename} FROM dual
+			</foreach>
+		) f
+	</insert>
+	
+	<select id="selectList" resultType="BoardFile">
+		SELECT * FROM BOARDFILE
+		WHERE BNUM = #{bnum}
+	</select>
+	
+	<delete id="delete">
+		delete from boardfile
+		where fnum = #{fnum}	
+	</delete>
+
+
+</mapper>
