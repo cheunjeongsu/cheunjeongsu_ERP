@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<!-- 수정없음 -->
 	<%@ include file = "./header.jsp" %>
 	<section>
 	
