@@ -8,90 +8,113 @@
 
 <script type="text/javascript">
 
-	//jquery안에 포함하면 안됨
-	function jusoCallBack(roadAddrPart1,addrDetail,zipNo){
-				// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-				document.frmMemberJoin.addr1.value = roadAddrPart1;
-				document.frmMemberJoin.addr2.value = addrDetail;
-				document.frmMemberJoin.zip.value = zipNo;
-				
-				//$('#addr1').val(roadAddrPart1);
-				//$('#addr2').val(addrDetail);
-				//$('#zip').val(zipNo);
-		}
-		
-		
-		
-	$(function () {
-		//메시지 
-		if ('${resultMap.msg}' != ''){
-			alert('${resultMap.msg}');
-		}
+//jquery안에 포함하면 안된다
+function jusoCallBack(roadAddrPart1,addrDetail,zipNo){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	document.frmJoin.addr1.value = roadAddrPart1;
+	document.frmJoin.addr2.value = addrDetail;
+	document.frmJoin.zip.value = zipNo;
+}
 
-		function goPopup(){
-			// 주소검색을 수행할 팝업 페이지를 호출합니다.
-			//controller를 호출해서 주소팝업 띄우기
-			var pop = window.open("${path}/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-			 
+$(function () {
+	//메시지 
+	if ('${resultMap.msg}' != ''){
+		alert('${resultMap.msg}');
+	}
+
+	function goPopup(){
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		//controller를 호출해서 주소팝업 띄우기
+		var pop = window.open("${path}/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		 
+	}
+	
+	
+	//주소찾기 버튼을 클릭했을때
+	$('#findAddr').click(function() {
+		goPopup(); //주소 팝업 띄우기
+	})
+	
+	//가입버튼을 눌렀을때
+	$('#btnJoin').click(function() {
+		var idCheckYn = $('#idCheckYn').val();
+		var userid = $('#userid').val();
+		var passwd = $('#passwd').val();
+		var email = $('#email').val();
+		
+		if (idCheckYn !='y'){
+			alert('아이디를 체크해 주세요!');
+			$('#idCheck').focus();
+		}else if (userid==''){
+			alert('아이디를 입력해 주세요!');
+			$('#userid').focus();
+		}else if (passwd==''){
+			alert('비밀번호를 입력해 주세요!');
+			$('#passwd').focus();
+		}else if (email==''){
+			alert('이메일을 입력해 주세요!');
+			$('#email').focus();
+		}else{
+			$('#frmJoin').submit();
 		}
-		
-		
-		//주소찾기 버튼을 클릭했을때
-		$('#goPopup').click(function() {
-			goPopup(); //주소 팝업 띄우기
-		})
-		
-		//가입버튼을 눌렀을때
-		$('#btnJoin').click(function() {
-			var userid = $('#userid').val();
-			var passwd = $('#passwd').val();
-			var email = $('#email').val();
 			
-			if (idCheckYn !='y'){
-				alert('아이디를 체크해 주세요!');
-				$('#idCheck').focus();
-			}else if (userid==''){
-				alert('아이디를 입력해 주세요!');
-				$('#userid').focus();
-			}else if (passwd==''){
-				alert('비밀번호를 입력해 주세요!');
-				$('#passwd').focus();
-			}else if (email==''){
-				alert('이메일을 입력해 주세요!');
-				$('#email').focus();
-			}else{
-				$('#frmJoin').submit();
-			}
-				
-			//아이디 체크
-			$("#idCheck").click(function(e) {
-				e.preventDefault();
-				var userid = $('#userid').val();
-				
-				$.ajax({
-					url:'${path}/member/idCheck/'+userid,
-					type:'get',
-					dataType:'json',
-					success : function(data){
-						console.log(data);
-						//rcode값이 0일때
-						$('#idCheckYn').val('y');
-						alert(data.msg)
-						
-					},
-					error:function(err){
-						console.log(err);
-						alert('실패');
-					}
-				});			
-			});
-			//아이디 변경하면 바뀜
-			$('#userid').change(function() {
-				alert();
-				$('#idCheckYn').val('n');
-			});
-		
 	});
+	
+	//아이디 체크
+	$("#idCheck").click(function(e) {
+		e.preventDefault();
+		var userid = $('#userid').val();
+		
+		$.ajax({
+			url:'${path}/member/idCheck/'+userid,
+			type:'get',
+			dataType:'json',
+			success : function(data){
+				console.log(data);
+				//rcode값이 0일때
+				$('#idCheckYn').val('y');
+				alert(data.msg)
+				
+			},
+			error:function(err){
+				console.log(err);
+				alert('실패');
+			}
+		});			
+	});
+
+	//아이디변경시 
+	$('#userid').change(function() {
+		$('#idCheckYn').val('n');
+	});
+	
+	//이메일인증
+	$("#emailCheck").click(function(e) {
+		e.preventDefault();
+		var email = $('#email').val();
+		var userid = $('#userid').val();
+		
+		$.ajax({
+			url:'${path}/member/emailCheck',
+			type:'get',
+			data:{userid,email},
+			dataType:'text',
+			success : function(data){
+				console.log(data);
+				location.href = 'https://mail.google.com/';
+				//새창에서 열림
+				//var pop = window.open('https://mail.google.com/' ,"_blank","width=570,height=420, scrollbars=yes, resizable=yes"); //새창 띄우기
+				
+			},
+			error:function(err){
+				console.log(err);
+				alert('실패');
+			}
+		});			
+	});
+	
+	
+});
 	</script>
 </head>
 <body>
@@ -112,11 +135,14 @@
 	 		</tr>	 		
 	 		<tr>
 	 			<th>e-mail</th>
-	 			<td><input type="email" name="email" id="email"></td>			
+	 			<td><input type="email" name="email" id="email">
+	 				<input id="emailCheckYn" type="hidden" value="${emailCheckYn}"><!-- 이메일체크여부 -->
+					<button id="emailCheck">이메일인증</button> 
+	 			</td>			
 	 		</tr>
 	 		<tr>
 	 			<th>우편번호</th>
-	 			<td><input type="text" name="zip" id="zip" size="5"> <button type="button" id="goPopup">주소찾기</button></td>			
+	 			<td><input type="text" name="zip" id="zip" size="5"> <button type="button" id="findAddr">주소찾기</button></td>			
 	 		</tr>
 	 		<tr>
 	 			<th>주소</th>

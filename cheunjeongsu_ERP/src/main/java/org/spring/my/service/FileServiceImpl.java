@@ -71,7 +71,7 @@ public class FileServiceImpl implements FileService{
 		}
 		if (filenamelist.size() == 0) return ;
 		filesMap.put("filenamelist", filenamelist);
-		
+		//db에 파일명 저장
 		fileDAO.insertBoardFiles(filesMap);
 
 		

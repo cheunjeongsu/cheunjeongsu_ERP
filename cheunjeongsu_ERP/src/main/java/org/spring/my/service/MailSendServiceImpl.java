@@ -3,7 +3,6 @@ package org.spring.my.service;
 import java.util.Random;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -39,7 +38,7 @@ public class MailSendServiceImpl implements MailSendService {
 		StringBuffer mailContent = new StringBuffer();
 		mailContent.append("<h2>이메일 인증</h2>");
 		mailContent.append(userid+"님. 아래 링크를 클릭하면 회원 가입 완료 됩니다.<br>");
-		mailContent.append("<a href='http://localhost:8081/my/member/joinComfirm?userid=" + userid + "&authCode"+authCode + "'>이메일 인증 확인(여기를 눌러주세요)</a>");
+		mailContent.append("<a href='http://localhost:8081/my/member/joinConfirm?userid=" + userid + "&authCode"+authCode + "'>이메일 인증 확인(여기를 눌러주세요)</a>");
 		
 		System.out.println(mailContent.toString());
 		

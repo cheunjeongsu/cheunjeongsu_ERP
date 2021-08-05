@@ -32,9 +32,7 @@ public class HomeController {
 				//apiUrl만들고 login이동
 				Map<String, String> resultMap = naverLoginService.getApiUrl();
 				session.setAttribute("state", resultMap.get("state"));
-				model.addAttribute("apiURL", resultMap.get("apiURL"));
-				
-				
+				model.addAttribute("apiURL", resultMap.get("apiURL"));				
 			}
 			
 			

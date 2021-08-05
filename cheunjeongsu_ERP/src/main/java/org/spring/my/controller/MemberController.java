@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.my.dto.Member;
+import org.spring.my.service.MailSendService;
 import org.spring.my.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -24,6 +26,9 @@ public class MemberController {
 			
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MailSendService mailSendService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -48,23 +53,24 @@ public class MemberController {
 	  
 	  //이메일에서 메일을 클릭 했을 때
 	  @RequestMapping("joinConfirm")
-	  public String joinConfirm(String userid, String authCode, HttpSession session) throws Exception {
-		  logger.info("아이디:"+ userid);
-			logger.info("joinConfirm:"+session.getId());
+	  public String joinConfirm(String userid, String authCode, String email,  HttpSession session, RedirectAttributes rattr) {
 			String sessionAuthCode = (String)session.getAttribute(userid);
-		  //인증키 검증
-		  if (sessionAuthCode == null) {//세션기간이 종료되면 key사라짐
-			  logger.info("세션기간만료");
-			  return "redirect:/home/main";
-		  }else if (sessionAuthCode.equals(authCode)) {
-			  logger.info("인증성공");
-			  //emailauth 1로 변경
-			  memberService.updateEmailAuth(userid);
-			  return "redirect:/home/login";
-		  }else {
-			  logger.info("인증키 일치 하지 않습니다.");
-			  return "redirect:/home/main";
-		  }
+			//인증키 검증
+			if (sessionAuthCode == null) { //세션기간이 종료되면 key사라짐
+				logger.info("세션기간 만료");
+				return "redirect:/member/join";
+			}else if (sessionAuthCode.equals(authCode)) {
+				logger.info("인증성공");
+				//emailauth 1로 변경
+				//memberService.updateEmailAuth(userid);
+				rattr.addFlashAttribute("userid", userid);
+				rattr.addFlashAttribute("email", email);
+				rattr.addFlashAttribute("emailCheckYn", "y");
+				return "redirect:/member/join";
+			}else {
+				logger.info("인증키 일치 하지 않습니다.");
+				return "redirect:/member/join";
+			}
 		  
 		  
 	  }
@@ -91,6 +97,17 @@ public class MemberController {
 			return memberService.idCheck(userid);
 		}
 		
-	
+		//이메일 전송
+		@ResponseBody
+		@RequestMapping("emailCheck")
+		public String emailCheck(String userid, String email, HttpSession session) throws Exception{
+			String authCode = mailSendService.sendAuthMail(email, userid);
+			//인증키를 세션에 넣기
+			//key:userid, value : authCode 인 세션생성
+			session.setAttribute(userid , authCode);
+			session.setMaxInactiveInterval(60*60*2);
+			return "ok";
+		}
+		
 	
 }

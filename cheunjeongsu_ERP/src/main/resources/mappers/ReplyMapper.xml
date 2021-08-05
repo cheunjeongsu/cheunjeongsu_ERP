@@ -16,14 +16,17 @@
 	</update>
 	
 	<select id="selectList" resultType="java.util.Map">
-			select R.*, um.state from reply R
-			left join
-			(select * from usermanage
-			    where gubun = '2'
-			      and userid = #{userid}) um
-			on (R.rnum = um.num)
-			where bnum = #{bnum}
-			order by restep
+			SELECT R.RNUM, R.BNUM, R.USERID, R.CONTENT, R.LIKECNT,R.DISLIKECNT,R.RESTEP, R.RELEVEL,
+			TO_CHAR(R.REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE,
+			TO_CHAR(R.MODIFYDATE, 'YYYY-MM-DD HH24:MI:SS') MODIFYDATE,
+			NVL(UM.STATE,'0') STATE   
+		FROM REPLY R LEFT JOIN 
+		(SELECT * FROM USERMANAGE
+		      WHERE GUBUN = '2'
+		        AND USERID =  #{userid}) UM
+		ON (R.RNUM = UM.NUM)
+		WHERE BNUM = #{bnum}
+		ORDER BY RESTEP
 	</select>
 	
 	<update id="update">
@@ -36,5 +39,29 @@
 		delete reply
 		where rnum = #{rnum}		
 	</delete>
-	
+	<!-- 좋아요 +1 -->
+	<update id="updateLikeCnt">
+		UPDATE REPLY
+		SET LIKECNT = LIKECNT +1
+		WHERE RNUM = #{rnum}
+	</update>
+	<!-- 좋아요 -1 -->
+	<update id="updateLikeCntCancel">
+		UPDATE REPLY
+		SET LIKECNT = LIKECNT -1
+		WHERE RNUM = #{rnum}
+	</update>
+
+	<!-- 싫어요 +1 -->
+	<update id="updateDisLikeCnt">
+		UPDATE REPLY
+		SET DISLIKECNT = DISLIKECNT +1
+		WHERE RNUM = #{rnum}
+	</update>
+	<!-- 싫어요 -1 -->
+	<update id="updateDisLikeCntCancel">
+		UPDATE REPLY
+		SET DISLIKECNT = DISLIKECNT -1
+		WHERE RNUM = #{rnum}
+	</update>
 </mapper>

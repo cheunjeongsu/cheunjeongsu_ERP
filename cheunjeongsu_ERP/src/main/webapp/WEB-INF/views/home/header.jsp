@@ -47,8 +47,8 @@
 		<header>
 		<div><h2>게시물 관리</h2></div>	
 		<div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
-		<button id="login">로그인</button>
-		<button id="logout">로그아웃</button>
+		<button id="btnLogin">로그인</button>
+		<button id="btnLogout">로그아웃</button>
 	</header>
 	<nav>
 		<a href="${path}/board/">게시물조회</a>
