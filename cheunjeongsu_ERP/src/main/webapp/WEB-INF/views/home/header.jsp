@@ -22,7 +22,7 @@
 	 $('#btnLogin').click(function(){
 	 	location.href = "${path}/home/login"
 	 	});
-	 
+	   
 	 
 	 //로그아웃
 	 $('#btnLogout').click(function(){

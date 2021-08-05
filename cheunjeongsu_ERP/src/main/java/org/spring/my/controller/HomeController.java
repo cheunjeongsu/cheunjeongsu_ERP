@@ -25,6 +25,10 @@ public class HomeController {
 			
 			@RequestMapping("main")
 			public void main() {}
+			
+			
+			@RequestMapping("home")
+			public void home() {}
 	
 			//로그인폼으로이동
 			@GetMapping("login")
