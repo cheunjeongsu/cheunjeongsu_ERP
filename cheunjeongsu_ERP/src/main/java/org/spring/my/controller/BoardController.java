@@ -2,16 +2,17 @@ package org.spring.my.controller;
 
 
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.spring.my.dto.Board;
 import org.spring.my.dto.Page;
 import org.spring.my.service.BoardService;
+import org.spring.my.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private FileService fileService;
 	
 	@GetMapping("add")
 	public void add()	{}
@@ -46,8 +49,8 @@ public class BoardController {
 	}
 	//세션생성
 	@RequestMapping("/")
-	public String home(Page page, Model model) {
-		//모델을 생성해서 @SessionAttributes에 생성
+	public String home(Page page, Model model) throws Exception{
+		//모델을 생성해서 @SessionAttributes 에 생성
 		model.addAttribute("page", page);
 		return "redirect:list";
 	}
@@ -77,8 +80,7 @@ public class BoardController {
 		
 	}
 	
-	//좋아요
-	
+	//좋아요	
 	@ResponseBody
 	@GetMapping("like/{bnum}")
 	public String like(@PathVariable("bnum") int bnum, HttpSession session)  throws Exception{
@@ -86,6 +88,7 @@ public class BoardController {
 		boardService.updateLikeCnt(bnum, "bulgom");
 		return "ok"; 
 	}
+	
 	//좋아요 취소
 		@ResponseBody
 		@GetMapping("likeCancel/{bnum}")
@@ -144,5 +147,11 @@ public class BoardController {
 			return "redirect:list";
 		}
 	
+		@RequestMapping("filedownload")
+		public void filedownload(String filename, HttpServletResponse response) throws Exception {
+			fileService.fileDownload(filename, response);
+		}
+		
+		
 }
 

@@ -30,7 +30,7 @@
 	<!-- 파일 업로드 디렉토리 bean생성 -->
 	<!-- String uploadDir = new String("C:/"); -->
 	<bean id="uploadDir" class="java.lang.String">
-		<constructor-arg value="C:/"/>
+		<constructor-arg value="C:/upload"/>
 	</bean>
 	
 	<!-- 암호화 bean 생성 -->

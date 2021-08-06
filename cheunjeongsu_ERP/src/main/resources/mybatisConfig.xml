@@ -13,7 +13,7 @@
 	<typeAliases>
 		<typeAlias type="org.spring.my.dto.Member" alias="Member"/>		
 		<typeAlias type="org.spring.my.dto.Board" alias="Board"/>
-		<typeAlias type="org.spring.my.dto.Board" alias="BoardFile"/>
+		<typeAlias type="org.spring.my.dto.BoardFile" alias="BoardFile"/>
 		<typeAlias type="org.spring.my.dto.UserManage" alias="UserManage"/>
 		<typeAlias type="org.spring.my.dto.Reply" alias="Reply"/>
 	</typeAliases>

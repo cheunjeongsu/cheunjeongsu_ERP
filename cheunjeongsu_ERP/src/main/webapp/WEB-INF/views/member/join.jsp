@@ -103,7 +103,7 @@ $(function () {
 				console.log(data);
 				location.href = 'https://mail.google.com/';
 				//새창에서 열림
-				//var pop = window.open('https://mail.google.com/' ,"_blank","width=570,height=420, scrollbars=yes, resizable=yes"); //새창 띄우기
+				var pop = window.open('https://mail.google.com/' ,"_blank","width=570,height=420, scrollbars=yes, resizable=yes"); //새창 띄우기
 				
 			},
 			error:function(err){
@@ -119,12 +119,12 @@ $(function () {
 </head>
 <body>
 	<h2>회원가입</h2>
-	<form name="frmMemberJoin" id="frmMemberJoin" action="${path}/member/join" method="post" enctype="multipart/form-data">
+	<form name="frmJoin" id="frmJoin" action="${path}/member/join" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input type="text" name="userid" id="userid">
+					<input type="text" name="userid" id="userid" value="${userid}">
 					<input id="idCheckYn" type="hidden" value="n"><!-- 아이디체크여부 -->
 					<button id="idCheck">아이디체크</button> 
 				</td>	
@@ -135,14 +135,15 @@ $(function () {
 	 		</tr>	 		
 	 		<tr>
 	 			<th>e-mail</th>
-	 			<td><input type="email" name="email" id="email">
+	 			<td><input type="email" name="email" id="email" value="${email}">
 	 				<input id="emailCheckYn" type="hidden" value="${emailCheckYn}"><!-- 이메일체크여부 -->
 					<button id="emailCheck">이메일인증</button> 
 	 			</td>			
 	 		</tr>
 	 		<tr>
 	 			<th>우편번호</th>
-	 			<td><input type="text" name="zip" id="zip" size="5"> <button type="button" id="findAddr">주소찾기</button></td>			
+	 			<td><input type="text" name="zip" id="zip" size="5"> 
+	 				<button type="button" id="findAddr">주소찾기</button></td>			
 	 		</tr>
 	 		<tr>
 	 			<th>주소</th>
@@ -158,7 +159,7 @@ $(function () {
 	 		</tr>
 	 		<tr>
 	 			<th>자기소개</th>
-	 			<td><textarea rows="7" cols="20"></textarea></td>
+	 			<td><textarea rows="5" cols="21" name="memo"></textarea>  </td>
 	 		</tr>
 	 	</table>
 	 <hr>

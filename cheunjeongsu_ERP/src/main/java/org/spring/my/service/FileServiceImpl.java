@@ -1,17 +1,22 @@
 package org.spring.my.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.my.dao.FileDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -76,6 +81,23 @@ public class FileServiceImpl implements FileService{
 
 		
 	}
+	
+	//파일 다운로드
+		@Override
+		public void fileDownload(String filename, HttpServletResponse response) throws Exception {
+				//다운로드 폴더
+				String fileUrl = uploadDir+ "/" + filename;
+				
+				//파일 읽기 스트림 생성
+				FileInputStream fis = new FileInputStream(fileUrl);
+				//응답객체의 헤더설정 변경:첨부파일형태로
+				response.setHeader("Content-Disposition", "attachment;filename="+filename);
+				//파일 보내기 스트림 생성
+				OutputStream out = response.getOutputStream();
+				//fis 읽어서 out에 내보냄
+				FileCopyUtils.copy(fis,  out);
+				
+		}
 	
 
 }

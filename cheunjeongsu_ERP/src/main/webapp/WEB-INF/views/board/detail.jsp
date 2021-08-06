@@ -35,10 +35,10 @@
 			<th>내용</th>
 			<td colspan="3">
 			<c:if test="${boardMap.board.REMOVEYN=='y'}">
-				<textarea rows="5" cols="20" name="content" id="content" >삭제된 내용입니다.</textarea>
+				<textarea rows="5" cols="30" name="content" id="content" >삭제된 내용입니다.</textarea>
 			</c:if>
 			<c:if test="${boardMap.board.REMOVEYN!='y'}">
-				<textarea rows="5" cols="20" name="content" id="content" >${boardMap.board.CONTENT}</textarea>
+				<textarea rows="5" cols="30" name="content" id="content" >${boardMap.board.CONTENT}</textarea>
 			</c:if>
 			</td>
 		</tr>
@@ -47,7 +47,7 @@
 			<td colspan="3">
 				<ol id="filelist">
 					<c:forEach var="boardfile" items="${boardMap.bflist}">
-						<li>${boardfile.filename}</li>
+						<li>${boardfile.filename} <button class="btnFileDownload" value="${boardfile.filename}"><i class="fas fa-download"></i></button></li>
 					</c:forEach>
 				</ol>
 			</td>
@@ -67,7 +67,7 @@
 					<button id="btnDelete">삭제</button>
 				</c:if> 
 				<button id="btnRepAdd">댓글</button>
-				<button>조회</button>
+				<button id="btnList">조회</button>
 			</td>
 		</tr>
 	</table>

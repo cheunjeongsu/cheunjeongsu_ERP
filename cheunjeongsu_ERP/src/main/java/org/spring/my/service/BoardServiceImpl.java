@@ -33,21 +33,17 @@ public class BoardServiceImpl implements BoardService{
 	private UserManageDAO userManageDAO;
 	
 	//메소드 단위로 트랜잭션 설정
-	@Transactional
-	@Override
-	public void insert(Board board) {
-		//게시물 저장
-		try {
-			boardDAO.insert(board);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}//게시물저장후엔 bnum 값 있음
-		
-		//파일을 업로드 하고 db에 저장
-		fileService.insertBoardFiles(board.getBnum(),board.getFiles());
+		@Transactional
+		@Override
+		public void insert(Board board) throws Exception{
+			//게시물 저장
+			boardDAO.insert(board);//게시물저장후엔 bnum 값 있음
+			
+			//파일을 업로드 하고 db에 저장
+			fileService.insertBoardFiles(board.getBnum(),board.getFiles());
 
-	}
+		}
+
 
 	@Override
 	public List<Map<String,Object>> selectList(Page page)  throws Exception {
@@ -108,13 +104,13 @@ public class BoardServiceImpl implements BoardService{
 		userManage.setUserid(userid); //회원ID
 		userManage.setState("0"); //0:조회, 1:좋아요, 2:싫어요
 		
-//		if (userManageDAO.selectOne(userManage) == null) {
-//			boardDAO.updateReadCnt(bnum);	
-//			userManageDAO.insert(userManage);
-//		}
+		if (userManageDAO.selectOne(userManage) == null) {
+			boardDAO.updateReadCnt(bnum);	
+			userManageDAO.insert(userManage);
+		}
 		
 		//프로시저를 이용하여 db처리
-		userManageDAO.pUpdateReadCnt(userManage);
+		//userManageDAO.pUpdateReadCnt(userManage);
 		
 	}
 

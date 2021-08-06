@@ -32,9 +32,10 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	
 	//회원 추가 폼 이동
 	@GetMapping("join")
-	public void join() {}
+	public void join() {	}
 	
 	  //회원 정보 저장
 	  @PostMapping("join") 

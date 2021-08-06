@@ -9,7 +9,11 @@
 	<hr>
 	<table border="1" id="rep{{RNUM}}">
 		<tr>
-			<th>{{RNUM}}</th>
+			<th>
+				{{#if YN}}
+					{{RNUM}}
+				{{/if}}
+			</th>
 			<td rowspan="3"><textarea rows="5" cols="30" id="REPCONTENT{{RNUM}}">{{CONTENT}}</textarea></td>
 		</tr>
 		<tr>
@@ -222,7 +226,14 @@ $(function() {
 		
 	});
 	
-	
+	//파일다운로드 버튼을 클릭했다면
+	$('.btnFileDownload').click(function(e) {
+		e.preventDefault();
+		var filename = $(this).val();
+		//alert(filename);
+		location.href = '${path}/board/filedownload?filename='+filename;
+		
+	});
 	
 	
 	/* 댓글처리 */
@@ -470,6 +481,12 @@ $(function() {
 		}
 		
 		
+		
+	});
+	
+	//조회폼 버튼을 클릭했을때
+	$('#btnList').click(function() {
+		location.href ='${path}/board/list';
 		
 	});
 	
