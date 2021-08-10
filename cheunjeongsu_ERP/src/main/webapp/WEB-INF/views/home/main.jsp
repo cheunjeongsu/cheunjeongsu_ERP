@@ -129,7 +129,7 @@
             </li>
               <!-- 데일리룩 메뉴 -->
             <li class="nav-item">
-                <a class="nav-link" href="${path}/board/list">
+                <a class="nav-link" href="${path}/board/">
                     <i class="fas fa-fw fa-table"></i>
                     <span>데일리룩 공유</span></a>
             </li>
