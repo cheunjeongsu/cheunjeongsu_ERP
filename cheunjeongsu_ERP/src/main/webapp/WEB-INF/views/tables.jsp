@@ -55,7 +55,7 @@
             
             <!-- 로그인 메뉴 -->
            	<li class="nav-item">
-               <a class="nav-link" href="${path}/login">
+               <a class="nav-link" href="${path}/home/login">
                    <i class="fas fa-fw fa-cog"></i>
                    <span>로그인</span></a>
            	</li>
@@ -90,14 +90,14 @@
             
             <!-- 사원리스트 메뉴 -->
             <li class="nav-item">
-                <a class="nav-link" href="${path}/WEB-INF/views/tables.jsp">
+                <a class="nav-link" href="${path}/WEB-INF/views/tables">
                     <i class="fas fa-fw fa-table"></i>
                     <span>사원리스트</span></a>
             </li>
             
             <!-- 게시판 메뉴 -->
             <li class="nav-item">
-                <a class="nav-link" href="${path}/tables">
+                <a class="nav-link" href="${path}/board/list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>게시판</span></a>
             </li>

@@ -26,10 +26,6 @@ public class HomeController {
 			@RequestMapping("main")
 			public void main() {}
 			
-			
-			@RequestMapping("home")
-			public void home() {}
-	
 			//로그인폼으로이동
 			@GetMapping("login")
 			public void login(HttpSession session, Model model) throws Exception{
@@ -64,10 +60,10 @@ public class HomeController {
 			@GetMapping("logout")
 			public String logout(HttpSession session) {
 				//로그인으로 했던 세션 삭제해서 로그아웃 하기
-				session.invalidate(); //모든 세션변수 삭제			
-								
-				return "home/main";
+				session.invalidate(); //모든 세션변수 삭제											
+				return "redirect:main";
 			}
+			
 			@GetMapping("company")
 			public String compaly() {
 				return "home/company";
