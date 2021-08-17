@@ -62,7 +62,7 @@ $(function() {
 		<tr>
 		<td colspan="2" align="center">
 			<button type="button" id="btnLogin">로그인</button>
-			<a href="${apiURL}"><img height="25" src="${path}/resources/images/btnNaver.png"></a>
+			<%-- <a href="${apiURL}"><img height="25" src="${path}/resources/img/btnNaver.png"></a> --%>
 			
 			<button type="reset">최소</button>
 			<button type="button" id="btnJoin">회원가입</button>

@@ -38,9 +38,16 @@
 			}
 			
 		});
+
 		
 		
 		
+		});
+		
+		//취소 버튼 클릭 했을 때
+		$('#btnBack').click(function(e){
+			e.preventDefault();
+			location.href ='${path}/board/list';	
 		});
 	});
 	
@@ -83,7 +90,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<button id ="btnSave">저장</button>
-					<button type="reset">취소</button>
+					<button id ="btnBack">취소</button>
 				</td>
 			
 			</tr>
