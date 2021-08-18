@@ -26,6 +26,9 @@ public class HomeController {
 			@RequestMapping("main")
 			public void main() {}
 			
+			@RequestMapping("index")
+			public void index() {}
+			
 			//로그인폼으로이동
 			@GetMapping("login")
 			public void login(HttpSession session, Model model) throws Exception{
