@@ -92,7 +92,7 @@
 <body>
 	<!--메뉴바 추가 부분-->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a id="main" class="navbar-brand" href="#">공유게시판</a>
+  <a id="main" class="navbar-brand" href="#">PhtoBoard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -121,8 +121,8 @@
     </ul>
      <div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
 		<div id=btnStyle>
-			<button id="btnLogin" >로그인</button>
-			<button id="btnLogout">로그아웃</button>
+			<button id="btnLogin" >Login</button>
+			<button id="btnLogout">Logout</button>
 		</div>
   </div>
 </nav>
