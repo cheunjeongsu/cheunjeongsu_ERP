@@ -84,7 +84,7 @@
 <body>
 <%@ include file="../home/header.jsp" %>
 	<header>
-		<h2>게시물</h2>
+		<h2>BoardList</h2>
 	</header>
 	<hr />
 	<div id="divBoardList">
@@ -98,13 +98,13 @@
 			</select>
 			<input type="text" name = "findvalue"  id="findvalue" maxlength="20"  value="${page.findvalue}">
 			<input type="hidden" name="curPage" value="1">
-			<button id=search>조회</button> 	
+			<button id=search>Search</button> 	
 		</form>		
 	</div>
 	<table class="table table-hover">
 		<thead>
 		<tr>
-			<th>번호</th>	
+			<th>게시물번호</th>	
 			<th>아이디</th>	
 			<th>제목</th>	
 			<th>내용</th>
@@ -129,7 +129,7 @@
 	<hr>
 	
 		<form action="${path}/board/add" id="contentadd">
-			<button >게시물등록</button>
+			<button></button>
 		</form>
 	
 <%-- 	${page}  --%>
