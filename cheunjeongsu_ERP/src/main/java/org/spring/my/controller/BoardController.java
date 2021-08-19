@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.spring.my.dto.Board;
+import org.spring.my.dto.BoardFile;
 import org.spring.my.dto.Page;
 import org.spring.my.service.BoardService;
 import org.spring.my.service.FileService;
@@ -51,9 +52,10 @@ public class BoardController {
 	@RequestMapping("/")
 	public String home(Page page, Model model) throws Exception{
 		//모델을 생성해서 @SessionAttributes 에 생성
-		model.addAttribute("page", page);
+		model.addAttribute("page", page);		
+
 		
-		return "redirect:list";
+		return "redirect:list";		
 	}
 	
 	
@@ -62,9 +64,12 @@ public class BoardController {
 	//@ModelAttribute("page") : 1) view까지 page를 전달
 									//2) @SessionAttributes 존재시 session에도 저장
 	@GetMapping("list")
-	public void list(@ModelAttribute("page") Page page, Model model) throws Exception {
+	public void list(@ModelAttribute("page") Page page, Model model, BoardFile boardfile) throws Exception {
 		List<Map<String,Object>> blist = boardService.selectList(page);
+
 		model.addAttribute("blist", blist);
+		System.out.println(blist);
+		
 	}
 	
 	//상세조회 폼으로 이동

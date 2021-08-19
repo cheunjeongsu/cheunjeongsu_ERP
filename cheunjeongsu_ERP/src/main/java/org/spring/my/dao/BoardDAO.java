@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.spring.my.dto.Board;
+import org.spring.my.dto.BoardFile;
 import org.spring.my.dto.Page;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,5 @@ public interface BoardDAO {
 	public void updateLikeCntCancel(int bnum) throws Exception;
 	public void updateDisLikeCnt(int bnum) throws Exception;
 	public void updateDisLikeCntCancel(int bnum) throws Exception;
+	
 }

@@ -55,17 +55,21 @@
 	<select id="selectList"  resultType="java.util.Map">
 		SELECT B.* FROM (
 	    	SELECT ROWNUM RN, B.* FROM (
-        		SELECT B.*, R.RCNT
-        		FROM BOARD B LEFT JOIN 
-            	(SELECT BNUM , COUNT(*) RCNT
-              		FROM REPLY
-             	GROUP BY BNUM) R
-              	ON (B.BNUM = R.BNUM)
+        	SELECT B.*, NVL(R.RCNT,0) RCNT, F.FNUM, F.FILENAME
+   				 FROM BOARD B LEFT JOIN 
+    			(SELECT BNUM , COUNT(*) RCNT
+   				 FROM REPLY
+   				 GROUP BY BNUM) R ON (B.BNUM = R.BNUM)
+			LEFT JOIN
+   				 (SELECT BF.* FROM BOARDFILE BF JOIN
+   				 (select BNUM, MIN(FNUM) FNUM 
+   				 from boardfile
+  				 group by BNUM) MF
+   				 ON (BF.FNUM = MF.FNUM)) F ON (B.BNUM = F.BNUM)  
 	        	<include refid="find"/>
             	ORDER BY B.BNUM DESC        
         	) B)B
-		WHERE B.RN BETWEEN #{startNum} AND #{endNum}
-		
+		WHERE B.RN BETWEEN #{startNum} AND #{endNum}		
 	</select>
 	
 	<select id="selectOne" resultType="java.util.Map">

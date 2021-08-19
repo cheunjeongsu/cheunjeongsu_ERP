@@ -1,11 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/includeFile.jsp" %>     
+<%@ include file="../include/includeFile.jsp" %>  
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>게시물조회</title>
+	<!-- 게시판 -->
+  <title>Photosen &mdash; Colorlib Website Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/my/resources/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="/my/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/my/resources/css/magnific-popup.css">
+  <link rel="stylesheet" href="/my/resources/css/jquery-ui.css">
+  <link rel="stylesheet" href="/my/resources/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/my/resources/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="/my/resources/css/lightgallery.min.css">    
+
+  <link rel="stylesheet" href="/my/resources/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="/my/resources/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="/my/resources/css/swiper.css">
+
+  <link rel="stylesheet" href="/my/resources/css/aos.css">
+
+  <link rel="stylesheet" href="/my/resources/css/style.css">
+
 <script type="text/javascript">
 
 	$(function() {
@@ -36,105 +60,65 @@
 
 </script>
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-
-<style type="text/css">
-	#col-md-offset-3{
-		font-size: 15px;
-	}
-	#contentadd{
-		font-size: 15px;
-		float: left;
-	}
-	
-	#findkey{
-		font-size: 13px;
-	}
-	#search{
-		font-size: 13px;
-	}
-	#findvalue{
-		font-size: 13px;
-	}
-	
-	#beforePage{
-		font-size: 20px;
-		margin: 5px;
-	}
-	#aList1{
-		font-size: 20px;
-		margin: 5px;
-	}
-	#aList2{
-		font-size: 20px;
-		margin: 5px;
-	}
-	#nextPage{
-		font-size: 20px;
-		margin: 5px;
-	}
-
-</style>
 
 </head>
 <body>
 <%@ include file="../home/header.jsp" %>
-	<header>
-		<h2>BoardList</h2>
-	</header>
+  
 	
-	<hr />
-	
-	${boardMap.bflist}
-	${bflist.BoardFile.filename}
-	${BoardFile.filename}     
-	<div id="divBoardList">
-		
-		<form action="${path}/board/list">
-			<select name="findkey" id="findkey">
-				<option value="subject" ${page.findkey=='subject'?'selected':''}>제목</option>
-				<option value="content" ${page.findkey=='content'?'selected':''}>내용</option>
-				<option value="subcon" ${page.findkey=='subcon'?'selected':''}>제목+내용</option>
-				<option value="userid" ${page.findkey=='userid'?'selected':''}>아이디</option>
-			</select>
-			<input type="text" name = "findvalue"  id="findvalue" maxlength="20"  value="${page.findvalue}">
-			<input type="hidden" name="curPage" value="1">
-			<button id=search>Search</button> 	
-		</form>		
-	</div>
-	<table class="table table-hover">
-		<thead>
-		<tr>
-			<th>제목</th>	
-			<th>내용</th>
-			<th>조회수</th>
-			<th>좋아요</th>
-			<th>싫어요</th>
-		</tr>
-		</thead>
-		<c:forEach var="board" items="${blist}">
-		<tr>
-			<td><a href="${board.BNUM}" class="aSubject">${board.SUBJECT}(${board.RCNT})</a></td>
-			<td>${board.CONTENT} </td>
-			<td>${board.READCNT} </td>
-			<td>${board.LIKECNT} </td>
-			<td>${board.DISLIKECNT} </td>
-		</tr>
-		</c:forEach>
-		
-	</table>
-	<hr>
-	
-		<form action="${path}/board/add" id="contentadd">
-			<button>게시글추가</button>
-		</form>
-	
-<%-- 	${page}  --%>
-	<div class="col-md-offset-3">
+    <div class="site-section"  data-aos="fade">
+      <div class="container-fluid">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-7">
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">BoardList</h2>
+                	<div id="searchaddbtn" align="center">
+                		<div id="divBoardList">		
+							<form action="${path}/board/list">
+								<select name="findkey" id="findkey">
+									<option value="subject" ${page.findkey=='subject'?'selected':''}>제목</option>
+									<option value="content" ${page.findkey=='content'?'selected':''}>내용</option>
+									<option value="subcon" ${page.findkey=='subcon'?'selected':''}>제목+내용</option>
+									<option value="userid" ${page.findkey=='userid'?'selected':''}>아이디</option>
+								</select>
+								<input type="text" name = "findvalue"  id="findvalue" maxlength="20"  value="${page.findvalue}">
+								<input type="hidden" name="curPage" value="1">
+								<button id=search>검색</button> 	
+							</form>
+							<form action="${path}/board/add" id="contentadd">
+								<button>게시글추가</button>
+							</form>		
+						</div>                		
+                	</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+           
+        <div class="row" id="lightgallery">
+  
+  
+  <!-- 이미지 나타내기 -->
+	<c:forEach var="board" items="${blist}">
+		<div class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" data-aos="fade" 
+			data-src="${path}/uploadimg/${board.FILENAME}"
+			 data-sub-html="<h4>${board.SUBJECT}</h4><p>${board.CONTENT}</p>">
+            <a href="#"><img src="${path}/uploadimg/${board.FILENAME}" alt="IMage" class="img-fluid"></a>
+         </div>										
+	</c:forEach>
+	     </div>
+      </div>
+    </div>
+ 
+  
+  
+  <!-- 페이지번호 -->
+  	<div class="col-md-offset-3">
 		<ul class="pagination">
 		<c:if test="${page.startPage != 1}">
 			<a href="${page.startPage-1}" class="aList" id="beforePage">이전</a>
@@ -153,6 +137,50 @@
 		</c:if>
 	</ul>	
 	</div>
+	
+	
+<!-- footer -->
+    <div class="footer py-4">
+      <div class="container-fluid text-center">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+    </div>
+
+    
+
+    
+    
+ 
+  
+
+  <script src="/my/resources/js/jquery-3.3.1.min.js"></script>
+  <script src="/my/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/my/resources/js/jquery-ui.js"></script>
+  <script src="/my/resources/js/popper.min.js"></script>
+  <script src="/my/resources/js/bootstrap.min.js"></script>
+  <script src="/my/resources/js/owl.carousel.min.js"></script>
+  <script src="/my/resources/js/jquery.stellar.min.js"></script>
+  <script src="/my/resources/js/jquery.countdown.min.js"></script>
+  <script src="/my/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/my/resources/js/bootstrap-datepicker.min.js"></script>
+  <script src="/my/resources/js/swiper.min.js"></script>
+  <script src="/my/resources/js/aos.js"></script>
+
+  <script src="/my/resources/js/picturefill.min.js"></script>
+  <script src="/my/resources/js/lightgallery-all.min.js"></script>
+  <script src="/my/resources/js/jquery.mousewheel.min.js"></script>
+
+  <script src="/my/resources/js/main.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
 
 </body>
 </html>

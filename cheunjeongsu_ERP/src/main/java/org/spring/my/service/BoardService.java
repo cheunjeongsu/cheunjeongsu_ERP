@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.spring.my.dto.Board;
+import org.spring.my.dto.BoardFile;
 import org.spring.my.dto.Page;
 
 
@@ -21,9 +22,10 @@ public interface BoardService {
 	public void updateLikeCntCancel(int bnum, String userid) throws Exception;
 	public void updateDisLikeCnt(int bnum, String userid) throws Exception;
 	public void updateDisLikeCntCancel(int bnum,String userid) throws Exception;
-
-	
 	
 	public void update(Board board, List<Integer> fileDeleteList) throws Exception;
+	
+
+
 	
 }

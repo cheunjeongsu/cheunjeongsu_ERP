@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body onload="stateChange()">
+	<%@ include file="../home/header.jsp" %>
+
 <i class="fas fa-heart"></i>
 <i class="far fa-heart"></i>
 로그인아이디 : ${sessionScope.userid}

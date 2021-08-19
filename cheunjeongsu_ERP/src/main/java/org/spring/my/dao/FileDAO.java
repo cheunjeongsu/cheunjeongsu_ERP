@@ -8,7 +8,10 @@ import org.spring.my.dto.BoardFile;
 public interface FileDAO {
 	public void insertBoardFiles(Map<String,Object> filesMap);
 
-	public List<BoardFile> selectList(int bnum);
-	
+	public List<BoardFile> selectList(int bnum);	
 	public void delete(int fnum);
+
+
+	
+
 }

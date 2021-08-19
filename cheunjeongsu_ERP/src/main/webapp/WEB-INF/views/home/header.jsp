@@ -6,24 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<!-- jQuery -->
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
- -->
-
- <%-- <script src="${pageContext.request.contextPath}/resources/common/js/jquery-3.3.1.min.js" ></script> --%>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Bootstrap CSS -->
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-<!-- Bootstrap theme -->
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css"> --%>
-
-<!-- common CSS -->
-<%-- <link rel="stylesheet" href="<c:url value='/resources/common/css/common.css'/>" >
- --%>
 <script type="text/javascript">
 	$(function() {
 		//버튼 활성화
@@ -90,41 +72,45 @@
 
 </head>
 <body>
-	<!--메뉴바 추가 부분-->
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a id="main" class="navbar-brand" href="#">PhtoBoard</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header class="site-navbar py-3" role="banner">
 
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-6 col-xl-2" data-aos="fade-down">
+            <h1 class="mb-0"><a href="${path}/home/main" class="text-white h2 mb-0">PhotoBoard</a></h1>
+          </div>
+          <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+            <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
 
+              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                <li class="active"><a href="${path}/home/main">Home</a></li>
+            
+                <li><a href="${path}/board/">BoardList</a></li>
+              
+              </ul>
+            </nav>
+          </div>
 
-  <div class="collapse navbar-collapse" id="navbarsExample03">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="${path}/home/main">홈<span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${path}/board/">게시판</a>
-      </li>
-    <!--   <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown03">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+            <div class="d-none d-xl-inline-block">
+              
+ 				<div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
+					<div id=btnStyle>
+						<button id="btnLogin" >Login</button>
+						<button id="btnLogout">Logout</button>
+				</div>                
+                
+            </div>
+
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
         </div>
-      </li> -->      
-    </ul>
-     <div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
-		<div id=btnStyle>
-			<button id="btnLogin" >Login</button>
-			<button id="btnLogout">Logout</button>
-		</div>
-  </div>
-</nav>
+      </div>
+      
+    </header>
+    
+  
 </body>
 </html>

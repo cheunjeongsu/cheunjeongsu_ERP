@@ -1,6 +1,5 @@
 package org.spring.my.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import org.spring.my.dto.UserManage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -37,11 +35,7 @@ public class BoardServiceImpl implements BoardService{
 		@Override
 		public void insert(Board board) throws Exception{
 			//게시물 저장
-			boardDAO.insert(board);//게시물저장후엔 bnum 값 있음
-			
-			//파일을 업로드 하고 db에 저장
-			fileService.insertBoardFiles(board.getBnum(),board.getFiles());
-
+			boardDAO.insert(board);//게시물저장후엔 bnum 값 있음			
 		}
 
 
@@ -73,7 +67,7 @@ public class BoardServiceImpl implements BoardService{
 		int endPage = startPage + page.getPerBlock() -1;
 		if (endPage > totPage) endPage = totPage;
 		page.setEndPage(endPage);
-		
+					
 		return boardDAO.selectList(page);
 	}
 
@@ -209,6 +203,12 @@ public class BoardServiceImpl implements BoardService{
 		fileService.insertBoardFiles(board.getBnum(),board.getFiles());
 		
 	}
+
+
+	
+
+	
+
 	
 	
 
