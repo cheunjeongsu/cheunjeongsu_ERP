@@ -86,7 +86,12 @@
 	<header>
 		<h2>BoardList</h2>
 	</header>
+	
 	<hr />
+	
+	${boardMap.bflist}
+	${bflist.BoardFile.filename}
+	${BoardFile.filename}     
 	<div id="divBoardList">
 		
 		<form action="${path}/board/list">
@@ -104,8 +109,6 @@
 	<table class="table table-hover">
 		<thead>
 		<tr>
-			<th>게시물번호</th>	
-			<th>아이디</th>	
 			<th>제목</th>	
 			<th>내용</th>
 			<th>조회수</th>
@@ -115,9 +118,7 @@
 		</thead>
 		<c:forEach var="board" items="${blist}">
 		<tr>
-			<td>${board.BNUM} </td>
-			<td>${board.USERID} </td>
-			<td><a href="${board.BNUM}" class="aSubject">${board.SUBJECT}(${board.RCNT})</a> </td>
+			<td><a href="${board.BNUM}" class="aSubject">${board.SUBJECT}(${board.RCNT})</a></td>
 			<td>${board.CONTENT} </td>
 			<td>${board.READCNT} </td>
 			<td>${board.LIKECNT} </td>
@@ -129,7 +130,7 @@
 	<hr>
 	
 		<form action="${path}/board/add" id="contentadd">
-			<button></button>
+			<button>게시글추가</button>
 		</form>
 	
 <%-- 	${page}  --%>

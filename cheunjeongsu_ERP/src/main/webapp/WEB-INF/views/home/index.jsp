@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/includeFile.jsp" %>  
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<!-- 게시판용 index -->
   <title>Photosen &mdash; Colorlib Website Template</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -112,9 +113,7 @@
       </div>
       
     </header>
-
-
-
+	
     <div class="site-section"  data-aos="fade">
       <div class="container-fluid">
 
@@ -129,60 +128,69 @@
           </div>
 
         </div>
+        
+           
         <div class="row" id="lightgallery">
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_1.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloremque hic excepturi fugit, sunt impedit fuga tempora, ad amet aliquid?</p>">
-            <a href="#"><img src="images/nature_small_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_2.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam omnis quaerat molestiae, praesentium. Ipsam, reiciendis. Aut molestiae animi earum laudantium.</p>">
-            <a href="#"><img src="images/nature_small_2.jpg" alt="IMage" class="img-fluid"></a>
+			<%-- <c:forEach var="board" items="${blist}">
+				<c:forEach var="boardfile" items="${boardMap.bflist}">	
+					 <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="${boardfile.filename}" data-sub-html="<h4>제목</h4><p>내용</p>">
+			          	 <a href="${Boardfile.filename}"><img src="${Boardfile.filename}" alt="IMage" class="img-fluid"></a>
+			         </div>					
+				</c:forEach>						
+			</c:forEach>
+          --%>
+          
+          	
+       <%--  <div class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_2.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam omnis quaerat molestiae, praesentium. Ipsam, reiciendis. Aut molestiae animi earum laudantium.</p>">
+            <a href="#"><img src="/my/resources/images/nature_small_2.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_3.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem reiciendis, dolorum illo temporibus culpa eaque dolore rerum quod voluptate doloribus.</p>">
-            <a href="#"><img src="images/nature_small_3.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_3.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_4.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim perferendis quae iusto omnis praesentium labore tempore eligendi quo corporis sapiente.</p>">
-            <a href="#"><img src="images/nature_small_4.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_4.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_5.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, voluptatum voluptate tempore aliquam, dolorem distinctio. In quas maiores tenetur sequi.</p>">
-            <a href="#"><img src="images/nature_small_5.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_5.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_6.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum cum culpa blanditiis illum, voluptatum iusto quisquam mollitia debitis quaerat maiores?</p>">
-            <a href="#"><img src="images/nature_small_6.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_6.jpg" alt="IMage" class="img-fluid"></a>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_7.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores similique impedit possimus, laboriosam enim at placeat nihil voluptatibus voluptate hic!</p>">
-            <a href="#"><img src="images/nature_small_7.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_7.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_8.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam vitae sed cum mollitia itaque soluta laboriosam eaque sit ratione, aliquid.</p>">
-            <a href="#"><img src="images/nature_small_8.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_8.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_9.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem reiciendis debitis beatae facilis quos, enim quis nobis magnam architecto earum!</p>">
-            <a href="#"><img src="images/nature_small_9.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_9.jpg" alt="IMage" class="img-fluid"></a>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_9.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque officiis magnam, facilis nam eos perspiciatis eligendi pariatur numquam debitis quos!</p>">
-            <a href="#"><img src="images/nature_small_9.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_9.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_8.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis consequatur quam et, delectus, cum iste ipsa animi eligendi obcaecati nemo.</p>">
-            <a href="#"><img src="images/nature_small_8.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_8.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_7.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quia illo voluptatibus numquam inventore, ab asperiores molestiae distinctio atque nihil.</p>">
-            <a href="#"><img src="images/nature_small_7.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_7.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_6.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt unde placeat obcaecati sapiente illum, fuga nostrum necessitatibus delectus maiores magnam.</p>">
-            <a href="#"><img src="images/nature_small_6.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_6.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_5.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas dignissimos non consectetur. Facilis totam, explicabo nam iure! Veniam modi, molestiae.</p>">
-            <a href="#"><img src="images/nature_small_5.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_5.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_4.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias minus voluptatibus inventore odio. Iure amet nesciunt a, officia quo ex.</p>">
-            <a href="#"><img src="images/nature_small_4.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_4.jpg" alt="IMage" class="img-fluid"></a>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_3.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium illum consectetur dolorum consequuntur sint doloribus eveniet deleniti! Illo, quibusdam, earum.</p>">
-            <a href="#"><img src="images/nature_small_3.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_3.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_2.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ad iure, inventore asperiores, cupiditate optio dignissimos labore quidem totam. Dignissimos.</p>">
-            <a href="#"><img src="images/nature_small_2.jpg" alt="IMage" class="img-fluid"></a>
+            <a href="#"><img src="/my/resources/images/nature_small_2.jpg" alt="IMage" class="img-fluid"></a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_1.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam temporibus totam similique provident delectus quos fugiat officia earum nisi voluptatibus?</p>">
             <a href="#"><img src="images/nature_small_1.jpg" alt="IMage" class="img-fluid"></a>
@@ -245,7 +253,7 @@
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/big-images/nature_big_1.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempora deleniti, consectetur quisquam labore vitae quod quae debitis hic ab!</p>">
             <a href="#"><img src="images/nature_small_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
+          </div>  --%>
 
         </div>
       </div>

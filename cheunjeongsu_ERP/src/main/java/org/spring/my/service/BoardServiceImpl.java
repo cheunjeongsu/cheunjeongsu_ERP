@@ -89,7 +89,7 @@ public class BoardServiceImpl implements BoardService{
 		Map<String, Object> boardMap = new HashMap<>();
 		boardMap.put("board", board);
 		boardMap.put("bflist", bflist);
-		
+				
 		return boardMap;
 	}
 	

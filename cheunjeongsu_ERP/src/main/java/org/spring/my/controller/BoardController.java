@@ -52,6 +52,7 @@ public class BoardController {
 	public String home(Page page, Model model) throws Exception{
 		//모델을 생성해서 @SessionAttributes 에 생성
 		model.addAttribute("page", page);
+		
 		return "redirect:list";
 	}
 	
@@ -77,6 +78,8 @@ public class BoardController {
 		Map<String, Object> boardMap = boardService.selectOne(bnum, userid);
 		
 		model.addAttribute("boardMap", boardMap);
+		
+		System.out.println(boardMap);
 		
 	}
 	
