@@ -1,5 +1,6 @@
 package org.spring.my.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -109,6 +111,18 @@ public class MemberController {
 			session.setMaxInactiveInterval(60*60*2);
 			return "ok";
 		}
-		
+		//멤버 리스트
+		@RequestMapping("list")
+		public String list(Model model) {
+			List<Member> list =memberService.selectList();
+			logger.info(list.toString());
+			model.addAttribute("list", list);
+			return "member/list";
+		}
+		//수정 폼으로 이동
+		@RequestMapping(value = "modify", method = RequestMethod.GET)
+		public String insert() {
+			return "member/modify";
+		}
 	
 }

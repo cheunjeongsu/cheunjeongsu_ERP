@@ -1,5 +1,6 @@
 package org.spring.my.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,6 +20,11 @@ public class MemberDAOImpl implements  MemberDAO{
 		sqlSession.insert("org.spring.my.MemberMapper.insert", member);
 	}
 
+	@Override
+	public List<Member> selectList() {
+		return sqlSession.selectList("org.spring.my.MemberMapper.selectList");
+	}
+	
 	@Override
 	public Member selectOne(String userid) {
 		return sqlSession.selectOne("org.spring.my.MemberMapper.selectOne", userid);

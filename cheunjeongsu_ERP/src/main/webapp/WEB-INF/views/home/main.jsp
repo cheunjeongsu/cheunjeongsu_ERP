@@ -98,7 +98,7 @@
   <script src="/my/resources/js/jquery.mousewheel.min.js"></script>
 
   <script src="/my/resources/js/main.js"></script>
-  
+  네!!!네!!
   <script>
     $(document).ready(function(){
       $('#lightgallery').lightGallery();
