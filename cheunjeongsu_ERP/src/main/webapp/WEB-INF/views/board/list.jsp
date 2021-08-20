@@ -60,6 +60,40 @@
 
 </script>
 
+<style type="text/css">
+	#contentadd{
+		font-size: 13px;
+	}
+	
+	#findkey{
+		font-size: 13px;
+	}
+	#search{
+		font-size: 13px;
+	}
+	#findvalue{
+		font-size: 13px;
+	}
+	
+	#beforePage{
+		font-size: 20px;
+		margin: 5px;
+	}
+	#aList1{
+		font-size: 20px;
+		margin: 5px;
+	}
+	#aList2{
+		font-size: 20px;
+		margin: 5px;
+	}
+	#nextPage{
+		font-size: 20px;
+		margin: 5px;
+	}
+
+</style>
+
 
 </head>
 <body>
@@ -88,9 +122,30 @@
 								<input type="hidden" name="curPage" value="1">
 								<button id=search>검색</button> 	
 							</form>
+							
+							
+							<!-- 페이지번호 -->
+					  	
+						
+							<c:if test="${page.startPage != 1}">
+								<a href="${page.startPage-1}" class="aList" id="beforePage">이전</a>
+							</c:if>
+							<c:forEach  var="i"  begin="${page.startPage}" end="${page.endPage}">
+								<c:if test="${page.curPage==i}">
+									<a href="${i}" class="aList" id="aList1">${i}</a>
+								</c:if>
+								<c:if test="${page.curPage!=i}">
+									<a href="${i}" class="aList" id="aList2">${i}</a>
+								</c:if>
+								
+							</c:forEach>
+							<c:if test="${page.totPage > page.endPage}">
+								<a href="${page.endPage+1}" class="aList" id="nextPage">다음</a>
+							</c:if>
 							<form action="${path}/board/add" id="contentadd">
 								<button>게시글추가</button>
 							</form>		
+						
 						</div>                		
                 	</div>
               </div>
@@ -109,7 +164,10 @@
 			data-src="${path}/uploadimg/${board.FILENAME}"
 			 data-sub-html="<h4>${board.SUBJECT}</h4><p>${board.CONTENT}</p>">
             <a href="#"><img src="${path}/uploadimg/${board.FILENAME}" alt="IMage" class="img-fluid"></a>
-         </div>										
+         </div>
+         <div>
+         	<a href="${board.BNUM}"></a>
+         </div>									
 	</c:forEach>
 	     </div>
       </div>
@@ -117,26 +175,7 @@
  
   
   
-  <!-- 페이지번호 -->
-  	<div class="col-md-offset-3">
-		<ul class="pagination">
-		<c:if test="${page.startPage != 1}">
-			<a href="${page.startPage-1}" class="aList" id="beforePage">이전</a>
-		</c:if>
-		<c:forEach  var="i"  begin="${page.startPage}" end="${page.endPage}">
-			<c:if test="${page.curPage==i}">
-				<a href="${i}" class="aList" id="aList1">${i}</a>
-			</c:if>
-			<c:if test="${page.curPage!=i}">
-				<a href="${i}" class="aList" id="aList2">${i}</a>
-			</c:if>
-			
-		</c:forEach>
-		<c:if test="${page.totPage > page.endPage}">
-			<a href="${page.endPage+1}" class="aList" id="nextPage">다음</a>
-		</c:if>
-	</ul>	
-	</div>
+  
 	
 	
 <!-- footer -->

@@ -35,7 +35,10 @@ public class BoardServiceImpl implements BoardService{
 		@Override
 		public void insert(Board board) throws Exception{
 			//게시물 저장
-			boardDAO.insert(board);//게시물저장후엔 bnum 값 있음			
+			boardDAO.insert(board);//게시물저장후엔 bnum 값 있음	
+			
+			//파일을 업로드 하고 db에 저장
+			fileService.insertBoardFiles(board.getBnum(),board.getFiles());
 		}
 
 
