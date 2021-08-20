@@ -65,8 +65,8 @@
 	/* #imgfile 이미지 크기 정하기 */
 	/* #img-thmbnail 이미지의 가운데 부분 보이기 */
 	#imgfile{
-		width: 400px;
-		height: 400px;
+		width: 350px;
+		height: 350px;
 		overflow: hidden;	
 	}
 	#img-thumbnail{
@@ -75,9 +75,6 @@
     	object-fit:cover;
 	}
 	
-	#contentadd{
-		font-size: 13px;
-	}
 	
 	#findkey{
 		font-size: 13px;
@@ -140,7 +137,7 @@
 							
 							<!-- 페이지번호 -->
 					  	
-						<form action="${path}/board/add" id="contentadd">
+						<form action="${path}/board/add">
 							<c:if test="${page.startPage != 1}">
 								<a href="${page.startPage-1}" class="aList" id="beforePage">이전</a>
 							</c:if>
@@ -156,7 +153,7 @@
 							<c:if test="${page.totPage > page.endPage}">
 								<a href="${page.endPage+1}" class="aList" id="nextPage">다음</a>
 							</c:if>							
-								<button>게시글추가</button>
+								<button id="addbtn">게시글추가</button>
 							</form>		
 						
 						</div>                		
@@ -172,16 +169,14 @@
   
   
   <!-- 이미지 나타내기 -->
-	<c:forEach var="board" items="${blist}">
+	<c:forEach var="board" items="${blist}">     
 		<div id="imgfile" class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" data-aos="fade" 
 			data-src="${path}/uploadimg/${board.FILENAME}"
 			 data-sub-html="<h4>${board.SUBJECT}</h4><p>${board.CONTENT}</p>">
-            <a href="#"><img src="${path}/uploadimg/${board.FILENAME}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>
-         </div>
-         <div>
-         	<a href="${board.BNUM}"></a>
-         </div>									
-	</c:forEach>
+            <a href="#"><img src="${path}/uploadimg/${board.FILENAME}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>        
+         </div>         
+	</c:forEach>	
+	
 	     </div>
       </div>
     </div>
