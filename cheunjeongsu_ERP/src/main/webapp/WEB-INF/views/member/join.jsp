@@ -133,13 +133,13 @@ $(function () {
 	 			<th>비밀번호</th>
 	 			<td><input type="password" name="passwd" id="passwd"></td>			
 	 		</tr>	 		
-	 		<tr>
+	 		<%-- <tr>
 	 			<th>e-mail</th>
 	 			<td><input type="email" name="email" id="email" value="${email}">
 	 				<input id="emailCheckYn" type="hidden" value="${emailCheckYn}"><!-- 이메일체크여부 -->
 					<button id="emailCheck">이메일인증</button> 
 	 			</td>			
-	 		</tr>
+	 		</tr> --%>
 	 		<tr>
 	 			<th>우편번호</th>
 	 			<td><input type="text" name="zip" id="zip" size="5"> 

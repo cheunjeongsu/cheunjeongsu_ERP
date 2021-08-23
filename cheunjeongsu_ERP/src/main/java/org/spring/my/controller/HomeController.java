@@ -31,15 +31,18 @@ public class HomeController {
 			
 			//로그인폼으로이동
 			@GetMapping("login")
-			public void login(HttpSession session, Model model) throws Exception{
-				//apiUrl만들고 login이동
-				Map<String, String> resultMap = naverLoginService.getApiUrl();
-				session.setAttribute("state", resultMap.get("state"));
-				model.addAttribute("apiURL", resultMap.get("apiURL"));				
+			public void login(/* HttpSession session, Model model */) throws Exception{
+				/*
+				 * //apiUrl만들고 login이동 Map<String, String> resultMap =
+				 * naverLoginService.getApiUrl(); session.setAttribute("state",
+				 * resultMap.get("state")); model.addAttribute("apiURL",
+				 * resultMap.get("apiURL"));
+				 */			
+				
 			}
 			
 			
-			@PostMapping("login")
+			@GetMapping("logincheck")
 			public String login(String userid, String passwd, Model model, HttpSession session) throws Exception {
 				// 0 : 로그인 완료 => 메인으로 이동
 				// 1 : 아이디 미존재 =>로그인으로

@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	function loginCallBack(userid,passwd){
+		console.log(userid);
+		console.log(passwd);
+		location.href="${path}/home/logincheck?userid="+userid+"&passwd="+passwd;
+	}
 	$(function() {
 		//버튼 활성화
 		//alert('${sessionScope.userid}');
@@ -22,7 +27,8 @@
 		
 		//로그인 버튼을 클릭했을때
 		$('#btnLogin').click(function() {
-			location.href = "${path}/home/login";
+			window.open("${path}/home/login","안녕하세요^^","width=800,height=400");
+			
 		});
 		
 		//로그아웃버튼을 클릭했을때
@@ -52,9 +58,9 @@
 		font-size: 12px; 
 	}
 
-	#btnStyle{
+	.btnStyle{
 		 border: 10px black;  
-		 color: black; 
+		 color: white; 
 		 padding: 10px;
 		 size: 12px; 
 	 } 
@@ -95,9 +101,11 @@
             <div class="d-none d-xl-inline-block">
               
  				<div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
-					<div id=btnStyle>
-						<button id="btnLogin" >Login</button>
-						<button id="btnLogout">Logout</button>
+					<div class=btnStyle>
+						<p id="btnLogin">Login</p>
+						<p id="btnLogout">Logout</p>
+						<!-- <button id="btnLogin" >Login</button>
+						<button id="btnLogout">Logout</button> -->
 				</div>                
                 
             </div>
