@@ -86,7 +86,7 @@
                 <li class="active"><a href="${path}/home/main">Home</a></li>
             
                 <li><a href="${path}/board/">BoardList</a></li>
-              
+                <li><a href="${path}/member/list">MemberList</a></li>
               </ul>
             </nav>
           </div>

@@ -1,6 +1,9 @@
 package org.spring.my.service;
 
+import java.util.List;
 import java.util.Map;
+
+import org.spring.my.dto.Member;
 
 public interface NaverLoginService {
 	//네이버로그인 apiurl 생성

@@ -1,6 +1,7 @@
 package org.spring.my.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -108,6 +109,12 @@ public class MemberServiceImpl implements MemberService {
 		return resultMap;
 	}
 
+	//MemberList 조회
+	@Override
+	public List<Member> selectList() {
+		return memberDAO.selectList();
+	}
+	
 	@Override
 	public Member selectOne(String userid) {
 		// TODO Auto-generated method stub

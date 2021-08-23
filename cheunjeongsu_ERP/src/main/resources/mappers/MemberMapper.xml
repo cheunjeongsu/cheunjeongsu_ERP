@@ -9,6 +9,10 @@
 		VALUES (#{userid},#{passwd},#{email},#{zip},#{addr1},#{addr2},#{filename},#{memo})	
 	</insert>
 	
+	<select id="selectList" resultType="Member">
+		select * from member
+	</select>
+	
 	<select id="selectOne" resultType="Member">
 		select * from member
 		where userid = #{userid}		

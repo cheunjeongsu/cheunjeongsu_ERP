@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 수정 왜 안돼?  -->
+
   <title>Photosen &mdash; Colorlib Website Template</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -98,7 +98,7 @@
   <script src="/my/resources/js/jquery.mousewheel.min.js"></script>
 
   <script src="/my/resources/js/main.js"></script>
-  
+  네!!!네!!
   <script>
     $(document).ready(function(){
       $('#lightgallery').lightGallery();
