@@ -65,9 +65,12 @@
 	/* #imgfile 이미지 크기 정하기 */
 	/* #img-thmbnail 이미지의 가운데 부분 보이기 */
 	#imgfile{
-		width: 350px;
-		height: 350px;
-		overflow: hidden;	
+		width: 500px;
+		height: 450px;
+		overflow: hidden;
+		float: inherit;
+		margin-bottom: 20px;
+		margin-top: 15px;
 	}
 	#img-thumbnail{
 		width:100%;
@@ -165,16 +168,15 @@
         </div>
         
            
-        <div class="row" id="lightgallery">
+        <div class="row" >
   
   
   <!-- 이미지 나타내기 -->
 	<c:forEach var="board" items="${blist}">     
-		<div id="imgfile" class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" data-aos="fade" 
-			data-src="${path}/uploadimg/${board.FILENAME}"
-			 data-sub-html="<h4>${board.SUBJECT}</h4><p>${board.CONTENT}</p>">
-            <a href="#"><img src="${path}/uploadimg/${board.FILENAME}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>        
-         </div>         
+		<div id="imgfile" class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" 
+			data-src="${path}/uploadimg/${board.FILENAME}">			
+            <a href="${board.BNUM}" class="aSubject"><img src="${path}/uploadimg/${board.FILENAME}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>
+         </div>             
 	</c:forEach>	
 	
 	     </div>
