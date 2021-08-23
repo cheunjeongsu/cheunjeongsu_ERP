@@ -4,6 +4,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- 게시판 -->
+  <title>Photosen &mdash; Colorlib Website Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/my/resources/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="/my/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/my/resources/css/magnific-popup.css">
+  <link rel="stylesheet" href="/my/resources/css/jquery-ui.css">
+  <link rel="stylesheet" href="/my/resources/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/my/resources/css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="/my/resources/css/lightgallery.min.css">    
+
+  <link rel="stylesheet" href="/my/resources/css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="/my/resources/fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="/my/resources/css/swiper.css">
+
+  <link rel="stylesheet" href="/my/resources/css/aos.css">
+
+  <link rel="stylesheet" href="/my/resources/css/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -59,7 +84,10 @@
 
 </head>
 <body>
+
+	<%@ include file="../home/header.jsp" %>
 <%-- <%@ include file="../home/header.jsp" %> --%>
+	<div align="center">
 	<h2>게시물 등록</h2>
 	<form id="frmBoardAdd" action="${path}/board/add" method="post" enctype="multipart/form-data" >
 		<table border = "1">
@@ -94,10 +122,37 @@
 				</td>
 			
 			</tr>
-		</table>
-	
+		</table>	
 	</form>
+	</div>
 	
+ 
+  
+
+  <script src="/my/resources/js/jquery-3.3.1.min.js"></script>
+  <script src="/my/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/my/resources/js/jquery-ui.js"></script>
+  <script src="/my/resources/js/popper.min.js"></script>
+  <script src="/my/resources/js/bootstrap.min.js"></script>
+  <script src="/my/resources/js/owl.carousel.min.js"></script>
+  <script src="/my/resources/js/jquery.stellar.min.js"></script>
+  <script src="/my/resources/js/jquery.countdown.min.js"></script>
+  <script src="/my/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/my/resources/js/bootstrap-datepicker.min.js"></script>
+  <script src="/my/resources/js/swiper.min.js"></script>
+  <script src="/my/resources/js/aos.js"></script>
+
+  <script src="/my/resources/js/picturefill.min.js"></script>
+  <script src="/my/resources/js/lightgallery-all.min.js"></script>
+  <script src="/my/resources/js/jquery.mousewheel.min.js"></script>
+
+  <script src="/my/resources/js/main.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
 
 </body>
 </html>
