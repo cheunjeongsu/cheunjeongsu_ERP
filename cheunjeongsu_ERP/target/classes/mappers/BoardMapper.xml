@@ -5,34 +5,53 @@
 <mapper namespace="org.spring.my.BoardMapper">
 	<sql id="find">
 		<if test="findkey=='subject'">
-			WHERE subject LIKE '%' || #{findvalue} || '%'
+			where subject like concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey=='content'">
-			WHERE content LIKE '%' || #{findvalue} || '%'
+			where content like concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey=='subcon'">
-			WHERE subject LIKE '%' || #{findvalue} || '%'
-			OR content LIKE '%' || #{findvalue} || '%'
+			where subject like concat('%' , #{findvalue} , '%')
+			or content like concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey=='userid'">
-			WHERE userid LIKE '%' || #{findvalue} || '%'
+			where userid like concat('%' , #{findvalue} , '%')
 		</if>
 	</sql>
 	
-	<!-- 게시물 갯수 -->
+	<!-- 게시물수 -->
 	<select id="selectTotCnt" resultType="int">
-		SELECT COUNT(*) TOTCNT FROM BOARD
+		select count(*) totcnt from board
 		<include refid="find"/>
 	</select>
-	
-	
 
-	<insert id="insert" parameterType="Board">
-		<selectKey keyProperty="bnum" resultType="int" order="BEFORE">
-			select bseq.nextval from dual
-		</selectKey>
-		INSERT INTO BOARD(bnum, userid, subject, content, ip)
-		VALUES (#{bnum}, #{userid}, #{subject}, #{content}, #{ip})
+	<select id="selectList"  resultType="java.util.Map">
+		select b.*, ifnull(r.rcnt,0) rcnt
+		from board b left join 
+			(select bnum , count(*) rcnt
+				from reply
+			group by bnum) r
+			on (b.bnum = r.bnum)
+		<include refid="find"/>			
+		order by b.bnum desc 
+		limit #{startNum}, #{perPage} 	<!-- 시작번호, 한페이지의게시물수 -->	
+	</select>
+	
+	<select id="selectOne" resultType="java.util.Map">
+		select b.*, um.state
+		from board b left join 
+		    (select * from usermanage
+		      where gubun = '1'
+		        and userid = #{userid}) um 
+		on (b.bnum = um.num)
+		where b.bnum = #{bnum}
+
+	</select>
+	
+	<!-- useGeneratedKeys : 키생성후 dto bnum 에 세팅 -->
+	<insert id="insert" parameterType="Board" useGeneratedKeys="true" keyProperty="bnum">
+		insert into board(userid, subject, content, ip)
+		values (#{userid}, #{subject}, #{content}, #{ip})
 	</insert>
 	
 	<update id ="update">
@@ -40,81 +59,48 @@
 			set subject = #{subject}, 
 			content = #{content}, 
 			ip = #{ip},
-			modifydate = sysdate
+			modifydate = now()
+		where bnum = #{bnum}
+	</update>
+	
+	<!-- 조회수 +1 -->
+ 	<update id="updateReadCnt">
+		update board
+		set readcnt = readcnt +1
+		where bnum = #{bnum}
+	</update>
+	
+	<!-- 좋아요 +1 -->
+	<update id="updateLikeCnt">
+		update board
+		set likecnt = likecnt +1
+		where bnum = #{bnum}
+	</update>
+	<!-- 좋아요 -1 -->
+	<update id="updateLikeCntCancel">
+		update board
+		set likecnt = likecnt -1
+		where bnum = #{bnum}
+	</update>
+
+	<!-- 싫어요 +1 -->
+	<update id="updateDisLikeCnt">
+		update board
+		set dislikecnt = dislikecnt +1
+		where bnum = #{bnum}
+	</update>
+	<!-- 싫어요 -1 -->
+	<update id="updateDisLikeCntCancel">
+		update board
+		set dislikecnt = dislikecnt -1
 		where bnum = #{bnum}
 	</update>
 	
 	<!-- 게시물삭제 -->
 	<update id="delete">
-		UPDATE BOARD
-		SET REMOVEYN = 'y'
-		WHERE BNUM = #{bnum}
-	</update>
-	
-	
-	<select id="selectList"  resultType="java.util.Map">
-		SELECT B.* FROM (
-	    	SELECT ROWNUM RN, B.* FROM (
-        	SELECT B.*, NVL(R.RCNT,0) RCNT, F.FNUM, F.FILENAME
-   				 FROM BOARD B LEFT JOIN 
-    			(SELECT BNUM , COUNT(*) RCNT
-   				 FROM REPLY
-   				 GROUP BY BNUM) R ON (B.BNUM = R.BNUM)
-			LEFT JOIN
-   				 (SELECT BF.* FROM BOARDFILE BF JOIN
-   				 (select BNUM, MIN(FNUM) FNUM 
-   				 from boardfile
-  				 group by BNUM) MF
-   				 ON (BF.FNUM = MF.FNUM)) F ON (B.BNUM = F.BNUM)  
-	        	<include refid="find"/>
-            	ORDER BY B.BNUM DESC        
-        	) B)B
-		WHERE B.RN BETWEEN #{startNum} AND #{endNum}		
-	</select>
-	
-	<select id="selectOne" resultType="java.util.Map">
-		SELECT B.*, UM.STATE
-		FROM BOARD B LEFT JOIN 
-		    (SELECT * FROM USERMANAGE
-		      WHERE GUBUN = '1'
-		        AND USERID = #{userid}) UM 
-		ON (B.BNUM = UM.NUM)
-		WHERE B.BNUM = #{bnum}
-	</select>
-	
-	<!-- 조회수 +1 -->
-	<update id="updateReadCnt">
 		update board
-		set readcnt = readcnt +1
-		where bnum = #{bnum}	
+		set removeyn = 'y'
+		where bnum = #{bnum}
 	</update>
-	
-	<!-- 좋아요 +1 -->
-	<update id="updateLikeCnt">
-		UPDATE BOARD
-		SET LIKECNT = LIKECNT +1
-		WHERE BNUM = #{bnum}
-	</update>
-	<!-- 좋아요 -1 -->
-	<update id="updateLikeCntCancel">
-		UPDATE BOARD
-		SET LiKECNT = LIKECNT -1
-		WHERE BNUM = #{bnum}
-	
-	</update>
-	
-	<!-- 싫어요 +1 -->
-	<update id="updateDisLikeCnt">
-		UPDATE BOARD
-		SET DISLIKECNT = DISLIKECNT +1
-		WHERE BNUM = #{bnum}
-	</update>
-	
-	<!-- 싫어요 -1 -->
-	<update id="updateDisLikeCntCancel">
-		UPDATE BOARD
-		SET DISLIKECNT = DISLIKECNT -1
-		WHERE BNUM = #{bnum}
-	</update>
-	
+
 </mapper>

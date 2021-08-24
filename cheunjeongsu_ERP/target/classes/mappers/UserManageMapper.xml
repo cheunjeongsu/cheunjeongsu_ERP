@@ -30,8 +30,4 @@
 	<update id="pUpdateReadCnt">
 		CALL P_UPDATE_READ_CNT(#{gubun},#{num}, #{userid}, #{state})
 	</update>
-	
-	
-	
-	
 </mapper>

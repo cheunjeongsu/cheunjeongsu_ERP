@@ -21,6 +21,4 @@
 		delete from boardfile
 		where fnum = #{fnum}	
 	</delete>
-
-
 </mapper>

@@ -11,10 +11,12 @@
 		AND USERID = #{userid}
 	</select>
 
+	<!-- 게시물 조회 또는 댓글 좋아요/싫어요-->
 	<insert id="insert" >
 		INSERT INTO USERMANAGE (GUBUN, NUM, USERID, STATE)
 		VALUES (#{gubun},#{num}, #{userid}, #{state})
 	</insert>
+	
 	<!-- 좋아요 / 싫어요 --> 
 	<update id="update">
 		UPDATE USERMANAGE
@@ -24,12 +26,13 @@
 		AND USERID = #{userid}
 	</update>
 	
-	<!-- 	프로시저 호출
+<!-- 	프로시저 호출
 	1)게시물 조회수+1
 	2)usermanager테이블에 insert -->
 	<update id="pUpdateReadCnt">
 		CALL P_UPDATE_READ_CNT(#{gubun},#{num}, #{userid}, #{state})
 	</update>
+	
 	
 	
 	

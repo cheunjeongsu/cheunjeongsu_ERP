@@ -8,10 +8,10 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 데이터소스 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="hr"/>
-		<property name="password" value="hr"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb?serverTimezone=Asia/Seoul"/>
+		<property name="username" value="test"/>
+		<property name="password" value="1111"/>
 	</bean>
 	
 	<!-- 마이바티스 factory객체 생성 -->

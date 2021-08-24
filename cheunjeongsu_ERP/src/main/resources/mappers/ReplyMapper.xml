@@ -4,64 +4,67 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.my.ReplyMapper">
 	<insert id="insert" >
-		INSERT INTO REPLY(RNUM,BNUM,USERID,CONTENT,IP,RESTEP,RELEVEL)
-		VALUES (rseq.nextval,#{bnum}, #{userid}, #{content}, #{ip},#{restep},#{relevel})
+		insert into reply(bnum,userid,content,ip,restep,relevel)
+		values (#{bnum}, #{userid}, #{content}, #{ip},#{restep},#{relevel} )
 	</insert>
 	<!-- 글순서+1 -->
 	<update id="updateRestep">
-		UPDATE REPLY
-		SET RESTEP = RESTEP +1
-		WHERE BNUM = #{bnum}
-		AND RESTEP >= #{restep}
+		update reply
+		set restep = restep +1
+		where bnum = #{bnum}
+		and restep >= #{restep}
 	</update>
 	
-	<select id="selectList" resultType="java.util.Map">
-			SELECT R.RNUM, R.BNUM, R.USERID, R.CONTENT, R.LIKECNT,R.DISLIKECNT,R.RESTEP, R.RELEVEL,
-			TO_CHAR(R.REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE,
-			TO_CHAR(R.MODIFYDATE, 'YYYY-MM-DD HH24:MI:SS') MODIFYDATE,
-			NVL(UM.STATE,'0') STATE   
-		FROM REPLY R LEFT JOIN 
-		(SELECT * FROM USERMANAGE
-		      WHERE GUBUN = '2'
-		        AND USERID =  #{userid}) UM
-		ON (R.RNUM = UM.NUM)
-		WHERE BNUM = #{bnum}
-		ORDER BY RESTEP
+	<select id="selectList" resultType="reply">
+ 		select r.*,
+<!--  		select r.rnum, r.bnum, r.userid, r.content, r.likecnt,r.dislikecnt,r.restep, r.relevel, 
+			date_format(r.regdate, '%y-%m-%d %t') regdate,
+			date_format(r.modifydate, '%y-%m-%d %t') modifydate,
+ -->			ifnull(um.state,'0') state   
+		from reply r left join 
+		(select * from usermanage
+		      where gubun = '2'
+		        and userid =  #{userid}) um
+		on (r.rnum = um.num)
+		where bnum = #{bnum}
+		order by restep
 	</select>
 	
 	<update id="update">
-		UPDATE REPLY
-		SET CONTENT = #{content}
-		WHERE RNUM = #{rnum}
+		update reply
+		set content = #{content}
+		where rnum = #{rnum}
 	</update>
-
-	<delete id="delete">
+	
+	<update id="delete">
 		delete reply
-		where rnum = #{rnum}		
-	</delete>
+		where rnum = #{rnum}
+	</update>
+	
 	<!-- 좋아요 +1 -->
 	<update id="updateLikeCnt">
-		UPDATE REPLY
-		SET LIKECNT = LIKECNT +1
-		WHERE RNUM = #{rnum}
+		update reply
+		set likecnt = likecnt +1
+		where rnum = #{rnum}
 	</update>
 	<!-- 좋아요 -1 -->
 	<update id="updateLikeCntCancel">
-		UPDATE REPLY
-		SET LIKECNT = LIKECNT -1
-		WHERE RNUM = #{rnum}
+		update reply
+		set likecnt = likecnt -1
+		where rnum = #{rnum}
 	</update>
 
 	<!-- 싫어요 +1 -->
 	<update id="updateDisLikeCnt">
-		UPDATE REPLY
-		SET DISLIKECNT = DISLIKECNT +1
-		WHERE RNUM = #{rnum}
+		update reply
+		set dislikecnt = dislikecnt +1
+		where rnum = #{rnum}
 	</update>
 	<!-- 싫어요 -1 -->
 	<update id="updateDisLikeCntCancel">
-		UPDATE REPLY
-		SET DISLIKECNT = DISLIKECNT -1
-		WHERE RNUM = #{rnum}
+		update reply
+		set dislikecnt = dislikecnt -1
+		where rnum = #{rnum}
 	</update>
+
 </mapper>
