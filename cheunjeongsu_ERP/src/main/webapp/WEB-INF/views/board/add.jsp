@@ -93,7 +93,7 @@
 		<table border = "1">
 			<tr>
 				<th>작성자ID</th>
-				<td><input type="text" name="userid" id="userid" readonly value="bulgom"></td>			
+				<td><input type="text" name="userid" id="userid" readonly value="${sessionScope.userid}"></td>			
 			</tr>
 			<tr>
 				<th>제목</th>
