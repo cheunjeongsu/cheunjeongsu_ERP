@@ -13,7 +13,6 @@
 		$('#btnLogin').click(function() {
 			var userid = $('#userid').val();
 			var passwd = $('#passwd').val();
-			
 			if(userid==''){
 				alert('아이디를 작성하세요');
 				$('#userid').focus();
@@ -21,8 +20,8 @@
 				alert('비밀번호를 작성하세요');
 				$('#passwd').focus();
 			}else{
-				opener.loginCallBack(userid,passwd);
-				window.close();
+				$('#frmMemberLogin').submit();
+				
 			}
 			
 		});
@@ -77,7 +76,7 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2" data-aos="fade-down">
-            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0">PhotoBoard</a></h1>
+            <h1 class="mb-0"><a href="${path}/home/main" class="text-white h2 mb-0">PhotoBoard</a></h1>
           </div>
          
 
@@ -88,7 +87,7 @@
     </header>
 
 
-	<form action="${path}/home/login" name="frmMemberLogin" id="frmMemberLogin" method="post" enctype="multipart/form-data">
+	<form action="${path}/home/logincheck" name="frmMemberLogin" id="frmMemberLogin" method="post" enctype="multipart/form-data">
     <div class="site-section"  data-aos="fade">
       <div class="container">
 
@@ -121,14 +120,14 @@
               <div id="logininfo2">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-white" for="passwd">PASSWORD</label>
-                  <input type="text" name="passwd" id="passwd" class="form-control" >
+                  <input type="password" name="passwd" id="passwd" class="form-control" >
                 </div>
               </div>
 			  
     	  	
     	  	  <div class="col-md-6 mb-3 mb-md-0">
-                <button type="button" id="btnLogin">login</button>
-                <button type="button" id="btnJoin">sign in</button>
+                <button type="button" id="btnLogin" style="cursor:hand;">login</button>
+                <button type="button" id="btnJoin" style="cursor:hand;">sign up</button>
               </div>
               
            

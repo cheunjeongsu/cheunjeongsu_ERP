@@ -27,7 +27,7 @@
 		
 		//로그인 버튼을 클릭했을때
 		$('#btnLogin').click(function() {
-			window.open("${path}/home/login","안녕하세요^^","width=800,height=400");
+			location.href = "${path}/home/login";
 			
 		});
 		
@@ -92,7 +92,7 @@
                 <li class="active"><a href="${path}/home/main">Home</a></li>
             
                 <li><a href="${path}/board/">BoardList</a></li>
-             <li><a href="${path}/member/list">MemberList</a></li>
+                <li><a href="${path}/member/list">MemberList</a></li>
               </ul>
             </nav>
           </div>
@@ -102,10 +102,12 @@
               
  				<div id="userid"><a href="" id="aUserid">${sessionScope.userid}</a> 님 반갑습니다.</div>
 					<div class=btnStyle>
-						<p id="btnLogin">Login</p>
-						<p id="btnLogout">Logout</p>
+					
+						<div id="btnLogin" style="cursor:hand;">Login</div>
+						<div id="btnLogout" style="cursor:hand;">Logout</div>
 						<!-- <button id="btnLogin" >Login</button>
 						<button id="btnLogout">Logout</button> -->
+					
 				</div>                
                 
             </div>
