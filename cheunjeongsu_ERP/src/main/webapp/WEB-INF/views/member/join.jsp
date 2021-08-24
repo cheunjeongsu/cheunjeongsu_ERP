@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script type="text/css">
+	.btnStyle{
+		 border: 10px black;  
+		 color: white; 
+		 padding: 10px;
+		 size: 12px; 
+	 } 
+</script>
 
 <script type="text/javascript">
 
@@ -56,6 +64,7 @@ $(function () {
 			$('#email').focus();
 		}else{
 			$('#frmJoin').submit();
+			location.href = "${path}/home/login";
 		}
 			
 	});
@@ -116,13 +125,15 @@ $(function () {
 	
 });
 	</script>
+
 </head>
 <body>
-	<h2>회원가입</h2>
+	<h2>Sign up</h2>
 	<form name="frmJoin" id="frmJoin" action="${path}/member/join" method="post" enctype="multipart/form-data">
 		<table>
+			
 			<tr>
-				<th>아이디</th>
+				<th class="btnstyle">아이디</th>
 				<td>
 					<input type="text" name="userid" id="userid" value="${userid}">
 					<input id="idCheckYn" type="hidden" value="n"><!-- 아이디체크여부 -->
@@ -130,41 +141,41 @@ $(function () {
 				</td>	
 	 		</tr>
 	 		<tr>
-	 			<th>비밀번호</th>
-	 			<td><input type="password" name="passwd" id="passwd"></td>			
-	 		</tr>	 		
-	 		<%-- <tr>
 	 			<th>e-mail</th>
 	 			<td><input type="email" name="email" id="email" value="${email}">
 	 				<input id="emailCheckYn" type="hidden" value="${emailCheckYn}"><!-- 이메일체크여부 -->
 					<button id="emailCheck">이메일인증</button> 
 	 			</td>			
-	 		</tr> --%>
+	 		</tr>
 	 		<tr>
-	 			<th>우편번호</th>
+	 			<th class="btnstyle">패스워드</th>
+	 			<td><input type="password" name="passwd" id="passwd"></td>			
+	 		</tr>	 		
+	 		
+	 		<tr>
+	 			<th class="btnstyle">우편번호</th>
 	 			<td><input type="text" name="zip" id="zip" size="5"> 
 	 				<button type="button" id="findAddr">주소찾기</button></td>			
 	 		</tr>
 	 		<tr>
-	 			<th>주소</th>
+	 			<th class="btnstyle">주소</th>
 	 			<td><input type="text" name="addr1" id="addr1"></td>				
 	 		</tr>
 	 		<tr>
-	 			<th>상세주소</th>
+	 			<th class="btnstyle">상세주소</th>
 	 			<td><input type="text" name="addr2" id="addr2"></td>				
 	 		</tr>
 	 		<tr>
-	 			<th>프로필사진</th>
+	 			<th class="btnstyle">프로필사진</th>
 	 			<td><input type="file" name="photofile" id="photofile"></td>				
 	 		</tr>
 	 		<tr>
-	 			<th>자기소개</th>
+	 			<th class="btnstyle">소개</th>
 	 			<td><textarea rows="5" cols="21" name="memo"></textarea>  </td>
 	 		</tr>
 	 	</table>
 	 <hr>
-	 <button type="button" id="btnJoin">가입</button>
-	 <button type="reset">최소</button>
+	 <button type="button" id="btnJoin" class="btnstyle">sign up</button>
 	</form>
 </body>
 </html>
