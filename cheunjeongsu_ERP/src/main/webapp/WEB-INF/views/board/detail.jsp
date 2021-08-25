@@ -59,34 +59,36 @@
           </div>
           <div class="col-md-4 ml-auto">
           	<!-- 유저아이디 -->
-            <h3 class="text-white">작성자 ${boardMap.board.userid}</h3>
+            <h3 class="text-white">작성자[${boardMap.board.userid}]</h3>
            		<p>조회수 : ${boardMap.board.readcnt}</p>
-           		<p><button id="btnLike">좋다</button> : <span id="likeCnt">${boardMap.board.likecnt}</span>
-				<button id="btnDisLike">싫다</button> : <span id="disLikeCnt">${boardMap.board.dislikecnt}</span></p>
-           	<table>
-           		<tr>
+           		<p>
+           		<button id="btnLike">좋아</button> : <span id="likeCnt">${boardMap.board.likecnt}</span>
+				<button id="btnDisLike">싫어</button> : <span id="disLikeCnt">${boardMap.board.dislikecnt}</span></p>
+				
+    <table>
+         <tr>
 			<th>내용</th>
 			<td colspan="3">
-			<c:if test="${boardMap.board.removeyn=='y'}">
-				<textarea rows="5" cols="30" name="content" id="content" >삭제된 내용입니다.</textarea>
-			</c:if>
-			<c:if test="${boardMap.board.removeyn!='y'}">
-				<textarea rows="5" cols="30" name="content" id="content" >${boardMap.board.content}</textarea>
-			</c:if>
+				<c:if test="${boardMap.board.removeyn=='y'}">
+					<textarea rows="5" cols="30" name="content" id="content" >삭제된 내용입니다.</textarea>
+				</c:if>
+				<c:if test="${boardMap.board.removeyn!='y'}">
+					<textarea rows="5" cols="30" name="content" id="content" >${boardMap.board.content}</textarea>
+				</c:if>
 			</td>
 		</tr>
 		<tr>
 			<td>등록일자</td>
-			<td colspan="3"><fmt:formatDate value="${boardMap.board.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+			<td colspan="3">${boardMap.board.regdate}</td>
 		</tr>
 		<tr>
 			<td>수정일자</td>
-			<td colspan="3"><fmt:formatDate value="${boardMap.board.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			<td colspan="3">${boardMap.board.modifydate}</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
 				<c:if test="${boardMap.board.userid == sessionScope.userid}">
-					<button id ="btnUpdateForm">수정하기</button>
+					<button id="btnUpdateForm">수정하기</button>
 					<button id="btnDelete">글삭제</button>
 				</c:if> 
 				<button id="btnRepAdd">댓글</button>
@@ -94,6 +96,7 @@
 			</td>
 		</tr>
 	</table>
+	
 	<hr id="rep0">
 	
 	<div id="replyAdd" hidden>
@@ -122,7 +125,7 @@
 	<h3>댓글 목록</h3>
 	<div id="replyList"></div>
 	
-           	</table>
+           
           </div>
         </div>
 
@@ -130,33 +133,33 @@
 		<!-- 바텀화면 -->
         <div class="row site-section">
           <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
-            <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <img src="${path}/uploadimg/${boardfile.filename}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
             <h2 class="text-black font-weight-light mb-4">Jean Smith</h2>
             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab quas facilis obcaecati non ea, est odit repellat distinctio incidunt, quia aliquam eveniet quod deleniti impedit sapiente atque tenetur porro?</p>
             <p>
-              <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
+             <!--  <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a>
+              <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a> -->
             </p>
           </div>
           <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
-            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <img src="${path}/uploadimg/${boardfile.filename}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
             <h2 class="text-black font-weight-light mb-4">Claire Smith</h2>
             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab quas facilis obcaecati non ea, est odit repellat distinctio incidunt, quia aliquam eveniet quod deleniti impedit sapiente atque tenetur porro?</p>
             <p>
-              <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
+           <!--    <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a>
-            </p>
+            </p> -->
           </div>
           <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
-            <img src="images/person_4.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <img src="${path}/uploadimg/${boardfile.filename}" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
             <h2 class="text-black font-weight-light mb-4">John Smith</h2>
             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ab quas facilis obcaecati non ea, est odit repellat distinctio incidunt, quia aliquam eveniet quod deleniti impedit sapiente atque tenetur porro?</p>
             <p>
-              <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
+            <!--   <a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span></a>
               <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a>
+              <a href="#" class="pl-3 pr-3"><span class="icon-facebook"></span></a> -->
             </p>
           </div>
         </div>

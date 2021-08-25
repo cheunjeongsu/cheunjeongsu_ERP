@@ -7,38 +7,38 @@
 <script id="replylist_template" type="text/x-handlebars-template">
 {{#each .}}
 	<hr>
-	<table border="1" id="rep{{RNUM}}">
+	<table border="1" id="rep{{rnum}}">
 		<tr>
 			<th>
-				{{#if YN}}
-					{{RNUM}}
+				{{#if yn}}
+					{{rnum}}
 				{{/if}}
 			</th>
-			<td rowspan="3"><textarea rows="5" cols="30" id="REPCONTENT{{RNUM}}">{{CONTENT}}</textarea></td>
+			<td rowspan="3"><textarea rows="5" cols="30" id="REPCONTENT{{rnum}}">{{content}}</textarea></td>
 		</tr>
 		<tr>
-			<th>{{USERID}}</th>
+			<th>{{userid}}</th>
 		</tr>
 		<tr>
-			<td><input type="hidden" class="state" id="state{{RNUM}}"value="{{STATE}}">
-				<button class="btnRepLike" id="btnRepLike{{RNUM}}" value="{{RNUM}}">{{#likeButton STATE}}{{/likeButton}}</button><span class="repLikeCnt" id="repLikeCnt{{RNUM}}" >{{LIKECNT}}</span>
-				<button class="btnRepDisLike" id="btnRepDisLike{{RNUM}}" value="{{RNUM}}">{{#disLikeButton STATE}}{{/disLikeButton}}</button><span class="repDisLikeCnt" id="repDisLikeCnt{{RNUM}}">{{DISLIKECNT}}</span>
+			<td><input type="hidden" class="state" id="state{{rnum}}"value="{{state}}">
+				<button class="btnRepLike" id="btnRepLike{{rnum}}" value="{{rnum}}">{{#likeButton state}}{{/likeButton}}</button><span class="repLikeCnt" id="repLikeCnt{{rnum}}" >{{likecnt}}</span>
+				<button class="btnRepDisLike" id="btnRepDisLike{{rnum}}" value="{{rnum}}">{{#disLikeButton state}}{{/disLikeButton}}</button><span class="repDisLikeCnt" id="repDisLikeCnt{{rnum}}">{{dislikecnt}}</span>
 			</td>
 		</tr>
 		<tr>
 			<th>등록일자</th>
-			<td>{{REGDATE}}</td>
+			<td>{{regdate}}</td>
 		</tr>
 		<tr>
 			<th>수정일자</th>
-			<td>{{MODIFYDATE}}</td>
+			<td>{{modifydate}}</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="right"> 
-				<input type="hidden" class="rnum" value="{{RNUM}}">
-				<input type="hidden" class="reStep" value="{{RESTEP}}">
-				<input type="hidden" class="reLevel" value="{{RELEVEL}}">
-				{{#sessionCheck USERID}}				
+				<input type="hidden" class="rnum" value="{{rnum}}">
+				<input type="hidden" class="reStep" value="{{restep}}">
+				<input type="hidden" class="reLevel" value="{{relevel}}">
+				{{#sessionCheck userid}}				
 				{{/sessionCheck}}
 				<button class="btnRepAdd">댓글</button>
 			</td>
@@ -79,7 +79,7 @@
 
 <script type="text/javascript">
 var loginUserid ='${sessionScope.userid}';
-var state = '${boardMap.board.STATE}';
+var state = '${boardMap.board.state}';
 let like = '<i class="fas fa-thumbs-up"></i>'; //좋아요
 let likeNo = '<i class="far fa-thumbs-up"></i>'; 
 let dislike = '<i class="fas fa-thumbs-down"></i>'; //싫어요
@@ -112,7 +112,7 @@ $(function() {
 	$('#btnLike').click(function() {
 		if (state=='0') { //조회상태일때만 싫어요/좋아요 가능
 			//좋아요 처리"C:/Users/Public/Desktop/IntelliJ IDEA Community Edition 2020.2.1 x64.lnk"
-			var bnum = '${boardMap.board.BNUM}';
+			var bnum = '${boardMap.board.bnum}';
 			console.log(bnum);
 			$.ajax({
 				url:'${path}/board/like/'+bnum,
@@ -133,7 +133,7 @@ $(function() {
 
 		}else if (state == '1'){ //좋아요 상태일때
 			//좋아요 취소 처리
-			var bnum = '${boardMap.board.BNUM}';
+			var bnum = '${boardMap.board.bnum}';
 			console.log(bnum);
 			$.ajax({
 				url:'${path}/board/likeCancel/'+bnum,
@@ -163,7 +163,7 @@ $(function() {
 	
 		if (state=='0') { //조회상태일때
 			//싫어요 처리
-			var bnum = '${boardMap.board.BNUM}';
+			var bnum = '${boardMap.board.bnum}';
 			console.log(bnum);
 			$.ajax({
 				url:'${path}/board/disLike/'+bnum,
@@ -184,7 +184,7 @@ $(function() {
 
 		}else if (state == '2'){ //싫어요 상태일때
 			//싫어요 취소 처리
-			var bnum = '${boardMap.board.BNUM}';
+			var bnum = '${boardMap.board.bnum}';
 			console.log(bnum);
 			$.ajax({
 				url:'${path}/board/disLikeCancel/'+bnum,
@@ -211,18 +211,18 @@ $(function() {
 	//원본글 삭제 버튼을 클릭했다면
 	$('#btnDelete').click(function() {
 		//권한 체크
-		if ('${boardMap.board.USERID}' != '${sessionScope.userid}'){
+		if ('${boardMap.board.userid}' != '${sessionScope.userid}'){
 			alert('삭제권한이 없습니다.');
 			return ;
 		}
 		//
-		location.href = '${path}/board/delete?bnum=${boardMap.board.BNUM}';
+		location.href = '${path}/board/delete?bnum=${boardMap.board.bnum}';
 		
 	});
 	
 	//원본글 수정폼으로이동 버튼을 클릭했다면
 	$('#btnUpdateForm').click(function(){
-		location.href = '${path}/board/modify?bnum=${boardMap.board.BNUM}';
+		location.href = '${path}/board/modify?bnum=${boardMap.board.bnum}';
 		
 	});
 	

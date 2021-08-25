@@ -5,7 +5,7 @@
 <mapper namespace="org.spring.my.MemberMapper">
 	<insert id="insert">
 		INSERT INTO MEMBER (userid, passwd, email, zip, addr1, addr2, filename, memo)
-		VALUES (#{userid},#{passwd},#{email},#{zip},#{addr1},#{addr2},#{filename},#{memo} )
+		values (#{userid}, #{passwd}, #{email}, #{zip}, #{addr1}, #{addr2}, #{filename}, #{memo})
 	</insert>
 	
 	<select id="selectOne" resultType="Member">

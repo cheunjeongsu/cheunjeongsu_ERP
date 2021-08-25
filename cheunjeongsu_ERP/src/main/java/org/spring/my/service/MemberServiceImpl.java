@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 			resultMap.put("msg", "중복된 아이디입니다.");
 			return resultMap; 
 		}
-		memberDAO.selectOne(member.getUserid());
+		
 		
 
 		
@@ -59,23 +59,18 @@ public class MemberServiceImpl implements MemberService {
 		member.setPasswd(bCryptPasswordEncoder.encode(member.getPasswd()));
 	
 		
-		//3)아이디 중복 확인
+		//3)db에 저장
 		memberDAO.insert(member);
 		
 		//4)이메일 전송 (인증키를 보내서 정상적인 사용자인지 확인)
-		String authCode = mailSendService.sendAuthMail(member.getEmail(), member.getUserid());
-		
-		
-		resultMap.put("authCode", authCode);
+//		String authCode = mailSendService.sendAuthMail(member.getEmail(), member.getUserid());
+//		
+//		
+//		resultMap.put("authCode", authCode);
 		resultMap.put("rcode", 0);
 		resultMap.put("msg", "회원가입 완료");
 		
-		return resultMap; 
-		
-		
-		
-		
-		
+		return resultMap; 		
 	}
 
 	@Override
