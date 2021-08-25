@@ -42,7 +42,7 @@
             <div class="row mb-5">
               <div class="col-12 ">
               <!-- 제목 -->
-                <h2 class="site-section-heading text-center">${boardMap.board.SUBJECT}</h2>
+                <h2 class="site-section-heading text-center">${boardMap.board.subject}</h2>
               </div>
             </div>
           </div>
@@ -59,33 +59,33 @@
           </div>
           <div class="col-md-4 ml-auto">
           	<!-- 유저아이디 -->
-            <h3 class="text-white">작성자 ${boardMap.board.USERID}</h3>
-           		<p>조회수 : ${boardMap.board.READCNT}</p>
-           		<p><button id="btnLike">좋다</button> : <span id="likeCnt">${boardMap.board.LIKECNT}</span>
-				<button id="btnDisLike">싫다</button> : <span id="disLikeCnt">${boardMap.board.DISLIKECNT}</span></p>
+            <h3 class="text-white">작성자 ${boardMap.board.userid}</h3>
+           		<p>조회수 : ${boardMap.board.readcnt}</p>
+           		<p><button id="btnLike">좋다</button> : <span id="likeCnt">${boardMap.board.likecnt}</span>
+				<button id="btnDisLike">싫다</button> : <span id="disLikeCnt">${boardMap.board.dislikecnt}</span></p>
            	<table>
            		<tr>
 			<th>내용</th>
 			<td colspan="3">
-			<c:if test="${boardMap.board.REMOVEYN=='y'}">
+			<c:if test="${boardMap.board.removeyn=='y'}">
 				<textarea rows="5" cols="30" name="content" id="content" >삭제된 내용입니다.</textarea>
 			</c:if>
-			<c:if test="${boardMap.board.REMOVEYN!='y'}">
-				<textarea rows="5" cols="30" name="content" id="content" >${boardMap.board.CONTENT}</textarea>
+			<c:if test="${boardMap.board.removeyn!='y'}">
+				<textarea rows="5" cols="30" name="content" id="content" >${boardMap.board.content}</textarea>
 			</c:if>
 			</td>
 		</tr>
 		<tr>
 			<td>등록일자</td>
-			<td colspan="3"><fmt:formatDate value="${boardMap.board.REGDATE}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+			<td colspan="3"><fmt:formatDate value="${boardMap.board.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 		</tr>
 		<tr>
 			<td>수정일자</td>
-			<td colspan="3"><fmt:formatDate value="${boardMap.board.MODIFYDATE}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			<td colspan="3"><fmt:formatDate value="${boardMap.board.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
-				<c:if test="${boardMap.board.USERID == sessionScope.userid}">
+				<c:if test="${boardMap.board.userid == sessionScope.userid}">
 					<button id ="btnUpdateForm">수정하기</button>
 					<button id="btnDelete">글삭제</button>
 				</c:if> 

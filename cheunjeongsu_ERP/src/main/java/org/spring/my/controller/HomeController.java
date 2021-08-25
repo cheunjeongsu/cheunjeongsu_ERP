@@ -40,9 +40,10 @@ public class HomeController {
 				 */			
 				
 			}
+		
 			
 			
-			@GetMapping("logincheck")
+			@PostMapping("logincheck")
 			public String login(String userid, String passwd, Model model, HttpSession session) throws Exception {
 				// 0 : 로그인 완료 => 메인으로 이동
 				// 1 : 아이디 미존재 =>로그인으로

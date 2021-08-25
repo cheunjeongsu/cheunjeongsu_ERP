@@ -54,12 +54,12 @@ public class BoardServiceImpl implements BoardService{
 		
 		//현재 페이지
 		int curPage = page.getCurPage();
-		//시작번호
-		int startNum = (curPage-1) * page.getPerPage() + 1;
+		//시작번호 : startNum 0부터 시작
+		int startNum = (curPage-1) * page.getPerPage();
 		page.setStartNum(startNum);
 		
 		//끝번호
-		int endNum = startNum + page.getPerPage() -1;
+		int endNum = startNum + page.getPerPage()-1;
 		page.setEndNum(endNum);
 		
 		//시작페이지

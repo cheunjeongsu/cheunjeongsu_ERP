@@ -174,8 +174,8 @@
   <!-- 이미지 나타내기 -->
 	<c:forEach var="board" items="${blist}">     
 		<div id="imgfile" class="col-sm-6 col-md-4 col-l g-3 col-xl-3 item" 
-			data-src="${path}/uploadimg/${board.FILENAME}">			
-            <a href="${board.BNUM}" class="aSubject"><img src="${path}/uploadimg/${board.FILENAME}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>
+			data-src="${path}/uploadimg/${board.filename}">			
+            <a href="${board.bnum}" class="aSubject"><img src="${path}/uploadimg/${board.filename}" id="img-thumbnail" alt="IMage" class="img-fluid"></a>
          </div>             
 	</c:forEach>	
 	
