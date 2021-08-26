@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="/my/resources/css/aos.css">
 
   <link rel="stylesheet" href="/my/resources/css/style.css">
+  
 
 </head>
 <body onload="stateChange()">

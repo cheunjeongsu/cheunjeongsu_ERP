@@ -239,7 +239,7 @@ $(function() {
 	/* 댓글처리 */
 	//댓글추가버튼을 클릭했을때
 	$('#btnRepSave').click(function(){
-		var bnum = ${boardMap.board.BNUM};
+		var bnum = '${boardMap.board.bnum}';
 		var content = $('#repContent').val();
 		var restep = $('#reStep').val();
 		var relevel = $('#reLevel').val();
@@ -269,7 +269,7 @@ $(function() {
 	
 	//댓글리스트 조회
 	function replylist() {
-		var bnum = ${boardMap.board.BNUM};
+		var bnum = '${boardMap.board.bnum}';
 		$.ajax({
 			url:'${path}/reply/list/'+bnum,
 			type:'get',   //method
