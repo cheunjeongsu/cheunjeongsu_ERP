@@ -46,7 +46,7 @@
 										</select>
 										<input type="text" name = "findvalue"  id="findvalue" maxlength="20"  value="${page.findvalue}">
 										<input type="hidden" name="curPage" value="1">
-										<button id=search>검색</button> 	
+										<button id="#">검색</button> 	
 									</form>
 								<table border="1">
 									<tr>
